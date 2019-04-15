@@ -26,9 +26,9 @@ include $(E3_REQUIRE_TOOLS)/driver.makefile
 include $(E3_REQUIRE_CONFIG)/DECOUPLE_FLAGS
 
 
-## Exclude linux-ppc64e6500
-EXCLUDE_ARCHS = linux-ppc64e6500
 
+EXCLUDE_ARCHS = linux-ppc64e6500
+EXCLUDE_ARCHS += linux-corei7-poky
 
 APP:=snmpApp
 APPDB:=$(APP)/Db
@@ -53,6 +53,9 @@ SOURCES   += $(APPSRC)/snmpSessShow.c
 SOURCES   += $(APPSRC)/devSnmp.cpp
 
 DBDS      += $(APPSRC)/devSnmp.dbd
+
+
+SCRIPTS += $(wildcard ../mibs/*-MIB)
 
 
 USR_DBFLAGS += -I . -I ..
