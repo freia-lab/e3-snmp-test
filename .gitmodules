@@ -1,4 +1,0 @@
-[submodule "snmp"]
-	path = snmp
-	url = https://gitlab.esss.lu.se/epics-modules/snmp.git
-	ignore = all
