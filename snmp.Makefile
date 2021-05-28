@@ -11,10 +11,10 @@ APPDB:=$(APP)/Db
 APPSRC:=$(APP)/src
 
 
-USR_CFLAGS   += `net-snmp-config --cflags`
+USR_CFLAGS   += $(shell net-snmp-config --cflags)
 USR_CFLAGS   += -DNETSNMP_NO_INLINE
 
-USR_LDFLAGS  += `net-snmp-config --libs`
+USR_LDFLAGS  += $(shell net-snmp-config --libs)
 
 USR_CFLAGS   += $(shell $(PERL) $(where_am_I)$(APPSRC)/getNetSNMPversion.pl)
 USR_CPPFLAGS += $(shell $(PERL) $(where_am_I)$(APPSRC)/getNetSNMPversion.pl)
