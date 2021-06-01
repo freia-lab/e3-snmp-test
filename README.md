@@ -1,5 +1,3 @@
+# e3-snmp  
 
-e3-snmp  
-======
-ESS Site-specific EPICS module : snmp
-
+e3 wrapper for the `snmp` module.
