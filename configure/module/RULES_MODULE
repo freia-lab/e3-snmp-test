@@ -1,25 +1,15 @@
-#
-.PHONY: db hdrs epics epics-clean
-
+.PHONY: db
 db: conf
 	install -m 644 $(TOP)/template/raritan-pdu-*.template       $(E3_MODULE_SRC_PATH)/snmpApp/Db/
 	install -m 644 $(TOP)/template/raritan-*-ess.substitutions  $(E3_MODULE_SRC_PATH)/snmpApp/Db/
 	$(QUIET) $(E3_MODULE_MAKE_CMDS) db
 
+.PHONY: hdrs
 hdrs:
-#	$(SUDO) install -m 755 -d $(E3_MODULES_INSTALL_LOCATION_INC)/pv
-#	cd $(E3_MODULES_INSTALL_LOCATION_INC) && $(SUDO) mv *.h pv/
 
+.PHONY: epics
 epics:
-	$(QUIET)echo "EPICS_BASE=$(EPICS_BASE)"        > $(TOP)/$(E3_MODULE_SRC_PATH)/configure/RELEASE
-#	$(QUIET)echo "ASYN=$(M_ASYN)"                  > $(TOP)/$(E3_MODULE_SRC_PATH)/configure/RELEASE
-#	$(QUIET)echo "SSCAN=$(M_SSCAN)"               >> $(TOP)/$(E3_MODULE_SRC_PATH)/configure/RELEASE
-#	$(QUIET)echo "SNCSEQ=$(M_SNCSEQ)"             >> $(TOP)/$(E3_MODULE_SRC_PATH)/configure/RELEASE
-	$(QUIET)echo "CHECK_RELEASE = YES"             > $(TOP)/$(E3_MODULE_SRC_PATH)/configure/CONFIG_SITE
-#	$(QUIET)echo "INSTALL_LOCATION=$(M_DEVLIB2)"  >> $(TOP)/$(E3_MODULE_SRC_PATH)/configure/CONFIG_SITE
-	$(SUDOBASH) "$(MAKE) -C $(E3_MODULE_SRC_PATH)"
 
+.PHONY: epics-clean
 epics-clean:
-	$(SUDOBASH) "$(MAKE) -C $(E3_MODULE_SRC_PATH) clean"
-
 
