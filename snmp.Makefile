@@ -9,7 +9,7 @@ EXCLUDE_ARCHS += linux-corei7-poky
 APP:=snmpApp
 APPDB:=$(APP)/Db
 APPSRC:=$(APP)/src
-
+NVENTSUP:=NventSGP/nventSgpSup
 
 USR_CFLAGS   += $(shell net-snmp-config --cflags)
 USR_CFLAGS   += -DNETSNMP_NO_INLINE
@@ -21,6 +21,7 @@ USR_CPPFLAGS += $(shell $(PERL) $(where_am_I)$(APPSRC)/getNetSNMPversion.pl)
 
 TEMPLATES += $(wildcard $(APPDB)/*.db)
 TEMPLATES += $(wildcard $(APPDB)/*.template)
+TEMPLATES += $(wildcard $(NVENTSUP)/*.db)
 
 SOURCES   += $(APPSRC)/snmpRegister.cpp
 SOURCES   += $(APPSRC)/snmpSessShow.c
@@ -29,6 +30,7 @@ SOURCES   += $(APPSRC)/devSnmp.cpp
 DBDS      += $(APPSRC)/devSnmp.dbd
 
 SCRIPTS += $(wildcard ../mibs/*-MIB)
+SCRIPTS += $(wildcard NventSGP/mibs/*-MIB.txt)
 
 USR_DBFLAGS += -I . -I ..
 USR_DBFLAGS += -I $(EPICS_BASE)/db
