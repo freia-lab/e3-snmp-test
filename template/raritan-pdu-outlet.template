@@ -1,7 +1,7 @@
 # Set SCAN 2 second for the Inlet information.
 # It should be enough data which we would like to
 # monitor
-# 
+#
 record(bo, "$(P)Outlet$(OUTLET_ID)Update1-Cmd")
 {
     field(DESC, "Update1 Outlet$(OUTLET_ID) Readbacks")
@@ -49,7 +49,7 @@ record(fanout, "$(P)Outlet$(OUTLET_ID)Update2:1-Fout_")
     field(LNK7, "$(P)Outlet$(OUTLET_ID)-Frequency-DD_")
 }
 
-# SNMP connection 
+# SNMP connection
 # rmsVoltage
 record(calc, "$(P)Outlet$(OUTLET_ID)-RMSVoltage-RB")
 {
@@ -62,7 +62,7 @@ record(calc, "$(P)Outlet$(OUTLET_ID)-RMSVoltage-RB")
     field(LOLO, "188")
     field(HIGH, "247")
     field(HIHI, "254")
-    
+
 }
 
 record(ai, "$(P)Outlet$(OUTLET_ID)-RMSVoltage-RB_")
@@ -249,14 +249,12 @@ record(longin, "$(P)Outlet$(OUTLET_ID)-Frequency-DD_")
     field( INP, "@$(HOST) $(USER) PDU2-MIB::outletSensorDecimalDigits.1.$(OUTLET_ID).frequency Gauge32: 100")
 }
 
-# # Record to allow user to provide a description of the 
+# # Record to allow user to provide a description of the
 # # outlet function or service
-# record(stringin, "$(P)Outlet$(OUTLET_ID)-Name-SP") 
+# record(stringin, "$(P)Outlet$(OUTLET_ID)-Name-SP")
 # {
 #     field(DESC, "Outlet$(OUTLET_ID) function")
 #     field(VAL,  "Outlet $(OUTLET_ID)")
 
 #     info(autosaveFields, "VAL")
 # }
-
-

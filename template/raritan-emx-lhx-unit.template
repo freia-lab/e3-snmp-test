@@ -29,5 +29,5 @@ record(stringin, "$(P)LHX$(LHX_ID)-MODEL-RB")
     field(DESC, "LHX$(LHX_ID) Model Name")
     field(DTYP, "Snmp")
     field( INP, "@$(HOST) $(USER) LHX-MIB::model.$(LHX_ID) STRING: 40")
- 
+
 }

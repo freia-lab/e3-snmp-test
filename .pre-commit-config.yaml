@@ -3,6 +3,4 @@ repos:
     rev: v4.0.1
     hooks:
       - id: end-of-file-fixer
-        files: ^cmds/|^iocsh/
       - id: trailing-whitespace
-        files: ^cmds/|^iocsh/

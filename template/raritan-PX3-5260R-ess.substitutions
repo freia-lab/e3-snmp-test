@@ -55,4 +55,3 @@ pattern { P, USER, HOST,  EXT_SENSOR_ID }
 { "$(PREFIX)", public, "$(PDU_IP)", 3 }
 { "$(PREFIX)", public, "$(PDU_IP)", 4 }
 }
-

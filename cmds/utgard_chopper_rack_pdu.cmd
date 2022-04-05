@@ -31,13 +31,13 @@ dbLoadTemplate("$(DB_TOP)/raritan-PX3-5190R-ess.substitutions", "PREFIX=$(IOC):,
 save_restoreSet_Debug(0)                        # optional
 save_restoreSet_IncompleteSetsOk(1)             # optional
 save_restoreSet_DatedBackupFiles(1)             # optional
- 
+
 system("install -m 777 -d $(AUTOSAVE_DIR)/$(IOC)/autosave/save")# optional, but if omitted, must ensure path exists, requires system module
 system("install -m 777 -d $(AUTOSAVE_DIR)/$(IOC)/autosave/req") # optional, but if omitted, must ensure path exists, requires system module
- 
+
 set_savefile_path("$(AUTOSAVE_DIR)/$(IOC)/autosave","/save")    # optional, but recommended. Replace TOP macro as required
 set_requestfile_path("$(AUTOSAVE_DIR)/$(IOC)/autosave","/req")  # optional, but recommended. Replace TOP macro as required
- 
+
 set_pass0_restoreFile("info_positions.sav")     # before record initialization
 set_pass0_restoreFile("info_settings.sav")      # before record initialization
 set_pass1_restoreFile("info_settings.sav")      # after record initialization
@@ -51,5 +51,3 @@ create_monitor_set("info_positions.req", 5 , "")
 create_monitor_set("info_settings.req", 15 , "")
 
 dbl > "$(TOP)/$(IOC)_PVs.list"
-
-

@@ -52,5 +52,3 @@ dbLoadRecords("raritan-pdu-extsensor.template" ,  "P=$(IOC):, USER=$(USER_R), HO
 iocInit()
 
 dbl > "$(TOP)/$(IOC)_PVs.list"
-
-

@@ -122,7 +122,7 @@ record(mbbi, "$(P)ExtSensor$(EXT_SENSOR_ID)-Type-RB")
 
 
 # EGU can be accessible through SNMP OID
-# 
+#
 record(longin, "$(P)ExtSensor$(EXT_SENSOR_ID)-EGU-RB_")
 {
     field(DESC, "SNMP channel")
@@ -186,10 +186,10 @@ record(stringin, "$(P)ExtSensor$(EXT_SENSOR_ID)-PORT-RB")
     field(DESC, "ExtSensor$(EXT_SENSOR_ID) Port")
     field(DTYP, "Snmp")
     field( INP, "@$(HOST) $(USER) EMD-MIB::externalSensorPort.$(EXT_SENSOR_ID) STRING: 40")
- 
+
 }
 
-# HOPR can be accessible through SNMP OID : externalSensorMaximum 
+# HOPR can be accessible through SNMP OID : externalSensorMaximum
 record(ai, "$(P)ExtSensor$(EXT_SENSOR_ID)-HOPR-RB_")
 {
     field(DESC, "External Sensor $(EXT_SENSOR_ID)")

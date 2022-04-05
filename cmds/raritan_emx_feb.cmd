@@ -85,4 +85,3 @@ dbLoadTemplate("$(DB_TOP)/raritan-emx-lhx-unit-sensors.template" , "PREF=$(IOC)-
 iocInit()
 
 dbl > "$(TOP)/$(IOC)_PVs.list"
-
