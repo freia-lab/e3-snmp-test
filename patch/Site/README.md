@@ -19,4 +19,3 @@ The changes were tested in local environemnt, and commits to the forked reposito
 ```
 $git diff feb8856 master --no-prefix > ../patch/Site/what_ever_filename.p0.patch
 ```
-

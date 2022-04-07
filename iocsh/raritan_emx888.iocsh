@@ -5,7 +5,7 @@
 #- SNMP_VER         - Optional:  SNMP Version
 #-                    Default: SNMP_VERSION_2c
 #-
-#- MAX_OIDS         - Optional:  maximum number of OID for Raritan EXM2-888. 
+#- MAX_OIDS         - Optional:  maximum number of OID for Raritan EXM2-888.
 #-                    Default: 24
 #- ###################################################
 

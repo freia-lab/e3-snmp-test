@@ -20,7 +20,7 @@
 #   author  : Jeong Han Lee
 #   email   : jeonghan.lee@gmail.com
 #   date    : Tuesday, June 12 17:16:35 CEST 2018
-#   version : 
+#   version :
 
 
 function print_ca_addr
@@ -65,7 +65,7 @@ while true; do
     for i in `seq 1 8`;
     do
 	printf ">>>  "
-	date '+%Y-%m-%d %H:%M:%S' 
+	date '+%Y-%m-%d %H:%M:%S'
 	echo "------------------------------------------"
 	caput Raritan-PDU:Outlet$i-SState-SET on
 	sleep ${PAUSE}
@@ -74,12 +74,10 @@ while true; do
     for i in `seq 1 8`;
     do
 	printf ">>>  "
-	date '+%Y-%m-%d %H:%M:%S' 
+	date '+%Y-%m-%d %H:%M:%S'
 	echo "------------------------------------------"
 	caput Raritan-PDU:Outlet$i-SState-SET off
 	sleep ${PAUSE}
 	echo ""
-    done    
-done  
-
-
+    done
+done

@@ -30,5 +30,5 @@ record(stringin, "$(P)MODEL-RB")
     field(DESC, "Model Name")
     field(DTYP, "Snmp")
     field( INP, "@$(HOST) $(USER) EMD-MIB::model.0 STRING: 40")
- 
+
 }

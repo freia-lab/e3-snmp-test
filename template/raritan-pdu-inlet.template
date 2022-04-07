@@ -1,7 +1,7 @@
 # Set SCAN 2 second for the Inlet information.
 # It should be enough data which we would like to
 # monitor
-# 
+#
 record(bo, "$(P)InletUpdate1-Cmd")
 {
     field(DESC, "Update1 Inlet Readbacks")
@@ -48,7 +48,7 @@ record(fanout, "$(P)InletUpdate2:1-Fout_")
     field(LNK7, "$(P)Inlet-Frequency-DD_")
 }
 
-# SNMP connection 
+# SNMP connection
 # rmsVoltage
 record(calc, "$(P)Inlet-RMSVoltage-RB")
 {
@@ -61,7 +61,7 @@ record(calc, "$(P)Inlet-RMSVoltage-RB")
     field(LOLO, "188")
     field(HIGH, "247")
     field(HIHI, "254")
-    
+
 }
 
 record(ai, "$(P)Inlet-RMSVoltage-RB_")
@@ -247,5 +247,3 @@ record(longin, "$(P)Inlet-Frequency-DD_")
     field(DTYP, "Snmp")
     field( INP, "@$(HOST) $(USER) PDU2-MIB::inletSensorDecimalDigits.1.1.frequency Gauge32: 100")
 }
-
-

@@ -32,4 +32,3 @@ dbLoadTemplate("$(DB_TOP)/raritan-PX3-5260R-ess.substitutions", "PREFIX=$(IOC):,
 iocInit()
 
 dbl > "$(TOP)/$(IOC)_PVs.list"
-

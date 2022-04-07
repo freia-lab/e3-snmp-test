@@ -2,7 +2,7 @@
 # when IOC is started
 # Increase HIGH if sensor number is larger
 # HIGH 2 : up to 13 sensors
-# HIGH 4 : 
+# HIGH 4 :
 record(bo, "$(P)LHX$(LHX_ID)-$(SENSOR_NAME)$(SENSOR_SUBID)-Update-Cmd")
 {
     field(DESC, "Update LHX$(LHX_ID)-$(SENSOR_NAME)$(SENSOR_SUBID) Readbacks")
@@ -113,4 +113,3 @@ record(stringout, "$(P)LHX$(LHX_ID)-$(SENSOR_NAME)$(SENSOR_SUBID)-EGU")
     field( DOL, "$(P)LHX$(LHX_ID)-$(SENSOR_NAME)$(SENSOR_SUBID)-EGU-RB.VAL NPP")
 
 }
-

@@ -28,7 +28,7 @@ record(calc, "$(P)ExtSensor$(EXT_SENSOR_ID)-Temp1-RB")
     field(INPB, "$(P)ExtSensor$(EXT_SENSOR_ID)-Temp1-DD_ NPP")
     field(CALC, "A * 10^(-B)")
     field( EGU, "degreeC")
-    
+
 }
 
 # PDU2-MIB::measurementsExternalSensorValue.1.1 = INTEGER: 246
@@ -56,7 +56,7 @@ record(calc, "$(P)ExtSensor$(EXT_SENSOR_ID)-Temp2-RB")
     field(INPB, "$(P)ExtSensor$(EXT_SENSOR_ID)-Temp2-DD_ NPP")
     field(CALC, "A * 10^(-B)")
     field( EGU, "degreeC")
-    
+
 }
 
 # PDU2-MIB::measurementsExternalSensorValue.1.1 = INTEGER: 246
@@ -83,7 +83,7 @@ record(calc, "$(P)ExtSensor$(EXT_SENSOR_ID)-Temp3-RB")
     field(INPB, "$(P)ExtSensor$(EXT_SENSOR_ID)-Temp3-DD_ NPP")
     field(CALC, "A * 10^(-B)")
     field( EGU, "degreeC")
-    
+
 }
 
 
@@ -110,7 +110,7 @@ record(calc, "$(P)ExtSensor$(EXT_SENSOR_ID)-Hum-RB")
     field(INPB, "$(P)ExtSensor$(EXT_SENSOR_ID)-Hum-DD_ NPP")
     field(CALC, "A * 10^(-B)")
     field( EGU, "percent")
-    
+
 }
 
 

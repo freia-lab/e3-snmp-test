@@ -24,7 +24,7 @@ raritan MODULE-IDENTITY
 		  supported by Raritan devices."
 
     REVISION	 "201701270000Z"      -- January 27, 2017
-    
+
     DESCRIPTION  "1) Added deviceSerialNumber under trapInformation
                   2) Added deviceSerialNumber to the OBJECTS clause of all traps
                  "
@@ -32,7 +32,7 @@ raritan MODULE-IDENTITY
 
 
     REVISION	 "201501050000Z"      -- January 5, 2015
-    
+
     DESCRIPTION  "1) Added agentInetPortNumber under trapInformation
                   2) Added agentInetPortNumber as a varbind to all traps
                  "
@@ -40,7 +40,7 @@ raritan MODULE-IDENTITY
 
 
     REVISION	 "201307240000Z"      -- July 24, 2013
-    
+
     DESCRIPTION  "SHX 30 support:
 		  - add lhxVoltageLow, lhxBaseElectronicsFailure and
 		    lhxCondenserPumpFailure traps
@@ -49,7 +49,7 @@ raritan MODULE-IDENTITY
 		  - support valvePosition sensor type
 		  - add sysContact, sysName, sysLocation to all traps"
 
-    
+
     REVISION	 "201208130000Z"      -- August 13, 2012
 
     DESCRIPTION  "Extend LHX MIB:
@@ -135,7 +135,7 @@ SensorUnitsEnumeration
                 meters(18),
 		rpm(19)
 	}
-						
+
 SensorStateEnumeration
 	::= TEXTUAL-CONVENTION
 	STATUS		current
@@ -446,7 +446,7 @@ lhxStBusError
     	DESCRIPTION
     	    "An ST-Bus communication error was detected."
     	::= { traps 15 }
-	
+
 lhxCollectiveFault
     	NOTIFICATION-TYPE
     	OBJECTS {
@@ -672,7 +672,7 @@ sensorId
             "A unique value for each sensor. Its value
              ranges between 1 and the value of sensorCount."
         ::= { trapInformation 11 }
-	
+
 oldOperationalState
     	OBJECT-TYPE
     	SYNTAX	    	OperationalStateEnumeration
@@ -688,19 +688,19 @@ agentInetPortNumber   OBJECT-TYPE
                       MAX-ACCESS    accessible-for-notify
                       STATUS        current
                       DESCRIPTION
-                          "The UDP port number used for accessing 
+                          "The UDP port number used for accessing
                               the SNMP agent on the device.
-                              Examples: 
+                              Examples:
                                    If the associated device MIB (PX2-MIB, EMD-MIB) has deviceCascadeType set to portForwarding, then
                                        master: 50500
                                        slave 1:50501
                                        slave 2: 50502
-                                       ...... 
+                                       ......
                                    If cascading mode is not portForwarding and default (Standard) ports are being used, then
                                         port: 161
-                                                       
+
                             "
-         ::= { trapInformation 13  }  
+         ::= { trapInformation 13  }
 
 
 deviceSerialNumber
@@ -712,7 +712,7 @@ deviceSerialNumber
     	    "The serial number of the Device."
     	::= { trapInformation 14 }
 
-	
+
 -- the LHX configuration
 
 portCount
@@ -800,7 +800,7 @@ operationalState
     	    "The operational state of the lhx controller.
 	     To switch LHX power state while controller is connected,
 	     set operationalState to 1 (off) or 2 (on).
-	     Switching power state while LHX is disconnected or to 
+	     Switching power state while LHX is disconnected or to
 	     0 (disconnected) is undefined."
     	DEFVAL {0}
     	::= { lhxConfigurationEntry 1 }
@@ -1188,7 +1188,7 @@ measurementsSensorTimeStamp
         DESCRIPTION
             "The sensor reading timestamp."
         ::= { sensorMeasurementsEntry 4 }
-	
+
 -- Conformance Information
 -- compliance statements
 
@@ -1256,10 +1256,10 @@ configurationGroup
 measurementsGroup
     	OBJECT-GROUP
         OBJECTS {
-    	    	measurementsSensorIsAvailable, 	
-    	    	measurementsSensorState,	
-    	    	measurementsSensorValue,	
-    	    	measurementsSensorTimeStamp	
+    	    	measurementsSensorIsAvailable,
+    	    	measurementsSensorState,
+    	    	measurementsSensorValue,
+    	    	measurementsSensorTimeStamp
     	}
         STATUS	    	current
         DESCRIPTION

@@ -27,5 +27,3 @@ dbLoadTemplate("raritan-PX3-5260R-ess.db", "PREFIX=$(IOC):, PDU_IP=$(TimingRackP
 iocInit()
 
 dbl > "$(TOP)/$(IOC)_PVs.list"
-
-

@@ -160,4 +160,3 @@ record(stringout, "$(P)ExtSensor$(EXT_SENSOR_ID)-EGU")
     field( DOL, "$(P)ExtSensor$(EXT_SENSOR_ID)-EGU-RB.VAL NPP")
 
 }
-

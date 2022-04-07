@@ -39,4 +39,3 @@ dbLoadRecords("$(DB_TOP)/raritan-emx-extsensor-unit.template" ,  "P=$(IOC):, USE
 iocInit()
 
 dbl > "$(TOP)/$(IOC)_PVs.list"
-

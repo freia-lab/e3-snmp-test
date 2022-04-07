@@ -36,5 +36,5 @@ record(stringin, "$(P)MODEL-RB")
     field(DESC, "PDU Model")
     field(DTYP, "Snmp")
     field( INP, "@$(HOST) $(USER) PDU2-MIB::pduModel.1 STRING: 40")
- 
+
 }

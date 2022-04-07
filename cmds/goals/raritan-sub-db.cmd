@@ -26,5 +26,3 @@ dbLoadRecords("raritan-PX3-5190R-ess.db", "PREFIX=$(IOC):, PDU_IP=$(PDU1)")
 iocInit()
 
 dbl > "$(TOP)/$(IOC)_PVs.list"
-
-
