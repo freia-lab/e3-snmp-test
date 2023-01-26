@@ -38,7 +38,6 @@ USR_DBFLAGS += -I $(APPDB)
 
 SUBS=$(wildcard $(APPDB)/*.substitutions)
 
-.PHONY: db
 .PHONY: $(SUBS)
 .PHONY: $(TMPS)
 .PHONY: vlibs
