@@ -1,6 +1,6 @@
 where_am_I := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 include $(E3_REQUIRE_TOOLS)/driver.makefile
-include $(E3_REQUIRE_CONFIG)/DECOUPLE_FLAGS
+
 
 
 EXCLUDE_ARCHS = linux-ppc64e6500
@@ -37,23 +37,6 @@ USR_DBFLAGS += -I $(EPICS_BASE)/db
 USR_DBFLAGS += -I $(APPDB)
 
 SUBS=$(wildcard $(APPDB)/*.substitutions)
-
-.PHONY: db
-db: $(SUBS) $(TMPS)
-
-.PHONY: $(SUBS)
-$(SUBS):
-	@printf "Inflating database ... %44s >>> %40s \n" "$@" "$(basename $(@)).db"
-	@rm -f  $(basename $(@)).db.d  $(basename $(@)).db
-	$(MSI) -D $(USR_DBFLAGS) -o $(basename $(@)).db -S $@ > $(basename $(@)).db.d
-	$(MSI)    $(USR_DBFLAGS) -o $(basename $(@)).db -S $@
-
-.PHONY: $(TMPS)
-$(TMPS):
-	@printf "Inflating database ... %44s >>> %40s \n" "$@" "$(basename $(@)).db"
-	@rm -f  $(basename $(@)).db.d  $(basename $(@)).db
-	@$(MSI) -D $(USR_DBFLAGS) -o $(basename $(@)).db $@  > $(basename $(@)).db.d
-	@$(MSI)    $(USR_DBFLAGS) -o $(basename $(@)).db $@
 
 .PHONY: vlibs
 vlibs:
