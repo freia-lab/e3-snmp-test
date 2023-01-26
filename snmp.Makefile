@@ -39,8 +39,6 @@ USR_DBFLAGS += -I $(APPDB)
 SUBS=$(wildcard $(APPDB)/*.substitutions)
 
 .PHONY: db
-db: $(SUBS) $(TMPS)
-
 .PHONY: $(SUBS)
 $(SUBS):
 	@printf "Inflating database ... %44s >>> %40s \n" "$@" "$(basename $(@)).db"
