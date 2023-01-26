@@ -41,11 +41,5 @@ SUBS=$(wildcard $(APPDB)/*.substitutions)
 .PHONY: db
 .PHONY: $(SUBS)
 .PHONY: $(TMPS)
-$(TMPS):
-	@printf "Inflating database ... %44s >>> %40s \n" "$@" "$(basename $(@)).db"
-	@rm -f  $(basename $(@)).db.d  $(basename $(@)).db
-	@$(MSI) -D $(USR_DBFLAGS) -o $(basename $(@)).db $@  > $(basename $(@)).db.d
-	@$(MSI)    $(USR_DBFLAGS) -o $(basename $(@)).db $@
-
 .PHONY: vlibs
 vlibs:
