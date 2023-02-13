@@ -1,0 +1,4 @@
+pyepics==3.5.1
+pytest==7.2.1
+run-iocsh==0.8.0
+snmpsim-lextudio==1.0.1

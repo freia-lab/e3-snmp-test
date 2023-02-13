@@ -1,0 +1,61 @@
+record(stringin, "TestSnmp:TestString-R")
+{
+    field(DTYP, "Snmp")
+    field(INP, "@$(HOST) $(USER) EMD-MIB::deviceName.0 STRING: 100")
+    field(SCAN, "5 second")
+}
+
+record(ai, "TestSnmp:TestInteger-R")
+{
+    field(DTYP, "Snmp")
+    field(INP, "@$(HOST) $(USER) EMD-MIB::externalSensorCount.0 INTEGER: 100")
+    field(SCAN, "5 second")
+}
+
+record(ai, "TestSnmp:TestCounter-R")
+{
+    field(DTYP, "Snmp")
+    field(INP, "@$(HOST) $(USER) EMD-MIB::managedExternalSensorCount.0 INTEGER: 100")
+    field(SCAN, "5 second")
+}
+
+record(ai, "TestSnmp:TestEnum-R")
+{
+    field(DTYP, "Snmp")
+    field(INP, "@$(HOST) $(USER) EMD-MIB::externalSensorType.3 ( 100 i")
+    field(SCAN, "5 second")
+}
+
+record(longin, "TestSnmp:TestGauge32-R")
+{
+    field(DTYP, "Snmp")
+    field(INP, "@$(HOST) $(USER) EMD-MIB::externalSensorDecimalDigits.2 Gauge32: 100")
+    field(SCAN, "5 second")
+}
+
+record(stringout, "TestSnmp:TestString")
+{
+    field(DTYP, "Snmp")
+    field(OUT, "@$(HOST) $(USER) EMD-MIB::deviceName.0 STRING: 100 s")
+    field(SCAN, "Passive")
+}
+
+record(ao, "TestSnmp:TestInteger")
+{
+    field(DTYP, "Snmp")
+    field(OUT, "@$(HOST) $(USER) EMD-MIB::externalSensorCount.0 INTEGER: 100 i")
+    field(SCAN, "Passive")
+}
+
+record(ao, "TestSnmp:TestEnum")
+{
+    field(DTYP, "Snmp")
+    field(OUT, "@$(HOST) $(USER) EMD-MIB::externalSensorType.3 ( 100 i")
+    field(SCAN, "Passive")
+}
+record(longout, "TestSnmp:TestGauge32")
+{
+    field(DTYP, "Snmp")
+    field(OUT, "@$(HOST) $(USER) EMD-MIB::externalSensorDecimalDigits.2 Gauge32: 100 u")
+    field(SCAN, "Passive")
+}
