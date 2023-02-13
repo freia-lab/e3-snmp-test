@@ -13,3 +13,7 @@ core.*
 .cvsignore
 *_old/
 *PVs.list
+*/venv/
+*/__pycache__/
+test/walks/
+test/demo_test/
