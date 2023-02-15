@@ -22,6 +22,7 @@ def inst_test(pytestconfig):
             "--agent-udpv4-endpoint=127.0.0.1:1024",
         ]
     )
+    sleep(2)
 
     cmd = pytestconfig.rootpath / "cmds" / "pv_test.cmd"
     ioc = IOC(cmd, ioc_executable="iocsh")
@@ -29,7 +30,8 @@ def inst_test(pytestconfig):
     yield ioc
 
     sim_proc.terminate()
-    
+
+
 class TestIOCConnection:
 
     pv_wait_in_seconds = 1
@@ -130,7 +132,7 @@ class TestReadWrite:
 
             number_of_samples_to_capture = 5
             time_increment_in_seconds = 5
-            
+
             samples = []
             for _ in range(number_of_samples_to_capture):
                 read_value = int(pv_read.get(timeout=self.pv_wait_in_seconds))
