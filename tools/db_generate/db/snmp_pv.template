@@ -1,0 +1,6 @@
+record($(RECORD_TYPE), "${P}${DISCIPLINE}${DEVICE_TYPE}${INDEX}${PROPERTY}") {
+    field(DESC, "${DESC}")
+    field(DTYP, "Snmp")
+    field(INP,  "@${HOST} public ${OID} ${MASK} 100")
+    field(SCAN, "5 second")
+}

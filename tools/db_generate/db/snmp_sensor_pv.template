@@ -1,0 +1,106 @@
+record($(RECORD_TYPE), "${P}${DISCIPLINE}${DEVICE_TYPE}${INDEX}${PROPERTY}-R") {
+    field(DESC, "${DESC}")
+    field(DTYP, "Snmp")
+    field(INP,  "@${HOST} public ${OID} ${MASK} 100 iR")
+    field(SCAN, "5 second")
+    field(EGU,  "$(EGU)")
+    field(LINR, "SLOPE")
+    field(PREC, 5)
+}
+
+record(ao, "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#ESLO") {
+    field(OUT,  "${P}${DISCIPLINE}${DEVICE_TYPE}${INDEX}${PROPERTY}-R.ESLO NPP")
+    field(OMSL, "closed_loop")
+    field(DOL,  "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#ESLO-RB.VAL NPP")
+}
+
+record(calc, "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#ESLO-RB") {
+    field(DESC, "External Sensor ${SENSOR_INDEX}")
+    field(INPA, "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#sensor-dd CPP")
+    field(CALC, "10^(-A)")
+    field(FLNK, "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#ESLO")
+}
+
+record(ao, "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#LOPR") {
+    field(OUT,  "${P}${DISCIPLINE}${DEVICE_TYPE}${INDEX}${PROPERTY}-R.LOPR NPP")
+    field(OMSL, "closed_loop")
+    field(DOL,  "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#LOPR-RB.VAL NPP")
+}
+
+record(calc, "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#LOPR-RB") {
+    field(DESC, "External Sensor ${SENSOR_INDEX}")
+    field(INPA, "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#sensor-lopr CPP")
+    field(INPB, "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#sensor-dd CPP")
+    field(CALC, "A*(10^(-B))")
+    field(FLNK, "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#LOPR")
+}
+
+record(ao, "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#LOLO") {
+    field(OUT,  "${P}${DISCIPLINE}${DEVICE_TYPE}${INDEX}${PROPERTY}-R.LOLO NPP")
+    field(OMSL, "closed_loop")
+    field(DOL,  "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#LOLO-RB.VAL NPP")
+}
+
+record(calc, "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#LOLO-RB") {
+    field(DESC, "External Sensor ${SENSOR_INDEX}")
+    field(INPA, "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#sensor-lolo CPP")
+    field(INPB, "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#sensor-dd CPP")
+    field(CALC, "A*(10^(-B))")
+    field(FLNK, "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#LOLO")
+}
+
+record(ao, "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#LOW") {
+    field(OUT,  "${P}${DISCIPLINE}${DEVICE_TYPE}${INDEX}${PROPERTY}-R.LOW NPP")
+    field(OMSL, "closed_loop")
+    field(DOL,  "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#LOW-RB.VAL NPP")
+}
+
+record(calc, "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#LOW-RB") {
+    field(DESC, "External Sensor ${SENSOR_INDEX}")
+    field(INPA, "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#sensor-low CPP")
+    field(INPB, "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#sensor-dd CPP")
+    field(CALC, "A*(10^(-B))")
+    field(FLNK, "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#LOW")
+}
+
+record(ao, "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#HOPR") {
+    field(OUT,  "${P}${DISCIPLINE}${DEVICE_TYPE}${INDEX}${PROPERTY}-R.HOPR NPP")
+    field(OMSL, "closed_loop")
+    field(DOL,  "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#HOPR-RB.VAL NPP")
+}
+
+record(calc, "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#HOPR-RB") {
+    field(DESC, "External Sensor ${SENSOR_INDEX}")
+    field(INPA, "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#sensor-hopr CPP")
+    field(INPB, "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#sensor-dd CPP")
+    field(CALC, "A*(10^(-B))")
+    field(FLNK, "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#HOPR")
+}
+
+record(ao, "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#HIHI") {
+    field(OUT,  "${P}${DISCIPLINE}${DEVICE_TYPE}${INDEX}${PROPERTY}-R.HIHI NPP")
+    field(OMSL, "closed_loop")
+    field(DOL,  "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#HIHI-RB.VAL NPP")
+}
+
+record(calc, "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#HIHI-RB") {
+    field(DESC, "External Sensor ${SENSOR_INDEX}")
+    field(INPA, "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#sensor-hihi CPP")
+    field(INPB, "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#sensor-dd CPP")
+    field(CALC, "A*(10^(-B))")
+    field(FLNK, "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#HIHI")
+}
+
+record(ao, "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#HIGH") {
+    field(OUT,  "${P}${DISCIPLINE}${DEVICE_TYPE}${INDEX}${PROPERTY}-R.HIGH NPP")
+    field(OMSL, "closed_loop")
+    field(DOL,  "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#HIGH-RB.VAL NPP")
+}
+
+record(calc, "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#HIGH-RB") {
+    field(DESC, "External Sensor ${SENSOR_INDEX}")
+    field(INPA, "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#sensor-high CPP")
+    field(INPB, "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#sensor-dd CPP")
+    field(CALC, "A*(10^(-B))")
+    field(FLNK, "${P}${DISCIPLINE}${DEVICE_TYPE}${SENSOR_INDEX}#HIGH")
+}
