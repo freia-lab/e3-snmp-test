@@ -1,0 +1,148 @@
+SGP_MIB: &SGP_MIB
+  'deviceMACAddress':
+    oid_root_node: "SGP-MIB::networkInterfaceMacAddress"
+    EPICS_record_type: stringin
+  'firmwareVersion': 
+    oid_root_node: "SGP-MIB::firmwareVersion"
+    EPICS_record_type: stringin
+  'hardwareVersion':
+    oid_root_node: "SGP-MIB::hardwareVersion"
+    EPICS_record_type: stringin
+  'model':
+    oid_root_node: "SGP-MIB::model"
+    EPICS_record_type: stringin
+  'sensor-value':
+    oid_root_node: "SGP-MIB::measurementsExternalSensorValue"
+    EPICS_record_type: ai
+  '#sensor-type':
+    oid_root_node: "SGP-MIB::externalSensorType"
+    EPICS_record_type: ai
+  '#sensor-egu':
+    oid_root_node: "SGP-MIB::externalSensorBaseUnit"
+    EPICS_record_type: longin
+  '#sensor-lopr':
+    oid_root_node: "SGP-MIB::externalSensorMinimum"
+    EPICS_record_type: 
+  '#sensor-lolo':
+    oid_root_node: "SGP-MIB::externalSensorLowerCriticalThreshold"
+    EPICS_record_type: ai
+  '#sensor-low':
+    oid_root_node: "SGP-MIB::externalSensorLowerMajorThreshold"
+    EPICS_record_type: ai
+  '#sensor-hopr':
+    oid_root_node: "SGP-MIB::externalSensorMaximum"
+    EPICS_record_type: ai
+  '#sensor-hihi': 
+    oid_root_node: "SGP-MIB::externalSensorUpperCriticalThreshold"
+    EPICS_record_type: ai
+  '#sensor-high':
+    oid_root_node: "SGP-MIB::externalSensorUpperMajorThreshold"
+    EPICS_record_type: ai
+
+EMD_MIB: &EMD_MIB
+  'deviceMACAddress':
+    oid_root_node: "EMD-MIB::deviceMACAddress"
+    EPICS_record_type: stringin
+  'deviceSerialNumber':
+    oid_root_node: "EMD-MIB::deviceSerialNumber"
+    EPICS_record_type: stringin
+  'firmwareVersion':
+    oid_root_node: "EMD-MIB::firmwareVersion"
+    EPICS_record_type: stringin
+  'hardwareVersion':
+    oid_root_node: "EMD-MIB::hardwareVersion"
+    EPICS_record_type: stringin
+  'model':
+    oid_root_node: "EMD-MIB::model"
+    EPICS_record_type: stringin
+  'managedExternalSensorCount':
+    oid_root_node: "EMD-MIB::managedExternalSensorCount"
+    EPICS_record_type: ai
+  '#sensor-type':
+    oid_root_node: "EMD-MIB::externalSensorType"
+    EPICS_record_type: ai
+  '#sensor-subtype':
+    oid_root_node: "EMD-MIB::externalOnOffSensorSubtype"
+    EPICS_record_type: ai
+  'sensor-value':
+    oid_root_node: "EMD-MIB::measurementsExternalSensorValue"
+    EPICS_record_type: ai
+  '#sensor-egu':
+    oid_root_node: "EMD-MIB::externalSensorUnits"
+    EPICS_record_type: longin
+  '#sensor-dd':
+    oid_root_node: "EMD-MIB::externalSensorDecimalDigits"
+    EPICS_record_type: ai
+  '#sensor-lopr':
+    oid_root_node: "EMD-MIB::externalSensorMinimum"
+    EPICS_record_type: ai
+  '#sensor-lolo':
+    oid_root_node: "EMD-MIB::externalSensorLowerCriticalThreshold"
+    EPICS_record_type: ai
+  '#sensor-low':
+    oid_root_node: "EMD-MIB::externalSensorLowerWarningThreshold"
+    EPICS_record_type: ai
+  '#sensor-hopr':
+    oid_root_node: "EMD-MIB::externalSensorMaximum"
+    EPICS_record_type: ai
+  '#sensor-hihi':
+    oid_root_node: "EMD-MIB::externalSensorUpperCriticalThreshold"
+    EPICS_record_type: ai
+  '#sensor-high':
+    oid_root_node: "EMD-MIB::externalSensorUpperWarningThreshold"
+    EPICS_record_type: ai
+
+LHX_MIB: &LHX_MIB
+  'firmwareVersion':
+    oid_root_node: "LHX-MIB::fwVersion"
+    EPICS_record_type: stringin
+  'model':
+    oid_root_node: "LHX-MIB::model"
+    EPICS_record_type: stringin
+  '#sensor-type':
+    oid_root_node: "LHX-MIB::sensorName"
+    EPICS_record_type: stringin
+  'sensor-value':
+    oid_root_node: "LHX-MIB::measurementsSensorValue"
+    EPICS_record_type: ai
+  '#sensor-egu':
+    oid_root_node: "LHX-MIB::sensorUnit"
+    EPICS_record_type: longin
+  '#sensor-dd':
+    oid_root_node: "LHX-MIB::sensorDecimalDigits"
+    EPICS_record_type: ai
+  '#sensor-lopr':
+    oid_root_node: "LHX-MIB::sensorMinimum"
+    EPICS_record_type: ai
+  '#sensor-lolo':
+    oid_root_node: "LHX-MIB::sensorLowerCriticalThreshold"
+    EPICS_record_type: ai
+  '#sensor-low':
+    oid_root_node: "LHX-MIB::sensorLowerWarningThreshold"
+    EPICS_record_type: ai
+  '#sensor-hopr':
+    oid_root_node: "LHX-MIB::sensorMaximum"
+    EPICS_record_type: ai
+  '#sensor-hihi':
+    oid_root_node: "LHX-MIB::sensorUpperCriticalThreshold"
+    EPICS_record_type: ai
+  '#sensor-high':
+    oid_root_node: "LHX-MIB::sensorUpperWarningThreshold"
+    EPICS_record_type: ai
+
+device_mib_dict:
+  nVent: 
+    - *SGP_MIB
+  EMX: 
+    - *EMD_MIB
+    - *LHX_MIB
+
+sensor_type_dict:
+  temperature: 'TT'
+  smokeDetection: 'SmD'
+  contact: 'Cont'
+
+property_dict:
+    temperature: 'Temperature'
+    smokeDetection: 'Tripped'
+    contact: 'On'

@@ -1,0 +1,250 @@
+file $(TOP)/db/snmp_pv.template
+{
+    pattern {RECORD_TYPE, DEVICE_TYPE, INDEX, PROPERTY, OID, MASK, DESC}
+			#EMD-MIB::deviceMACAddress
+            {stringin,  -EMX,       -:,     "deviceMACAddress",             EMD-MIB::deviceMACAddress.0,                        STRING:,    "The current MAC address."}
+			#EMD-MIB::deviceSerialNumber
+            {stringin,  -EMX,       -:,     "deviceSerialNumber",           EMD-MIB::deviceSerialNumber.0,                      STRING:,    "The device serial number."}
+			#EMD-MIB::firmwareVersion
+            {stringin,  -EMX,       -:,     "firmwareVersion",              EMD-MIB::firmwareVersion.0,                         STRING:,    "The firmware version."}
+			#EMD-MIB::hardwareVersion
+            {stringin,  -EMX,       -:,     "hardwareVersion",              EMD-MIB::hardwareVersion.0,                         STRING:,    "The main boards hardware version."}
+			#EMD-MIB::model
+            {stringin,  -EMX,       -:,     "model",                        EMD-MIB::model.0,                                   STRING:,    "The EMD device model."}
+			#EMD-MIB::managedExternalSensorCount
+            {ai,        -EMX,       -:,     "managedExternalSensorCount",   EMD-MIB::managedExternalSensorCount.0,              INTEGER:,   "The number of managed external sensors"}
+			#EMD-MIB::externalSensorType
+            {ai,        -Cont,      -1:,    "#sensor-type",                 EMD-MIB::externalSensorType.1,                      INTEGER:,   "The type of sensor."}
+            {ai,        -Cont,      -2:,    "#sensor-type",                 EMD-MIB::externalSensorType.2,                      INTEGER:,   "The type of sensor."}
+            {ai,        -TT,        -3:,    "#sensor-type",                 EMD-MIB::externalSensorType.3,                      INTEGER:,   "The type of sensor."}
+            {ai,        -SmD,       -4:,    "#sensor-type",                 EMD-MIB::externalSensorType.4,                      INTEGER:,   "The type of sensor."}
+            {ai,        -Cont,      -5:,    "#sensor-type",                 EMD-MIB::externalSensorType.5,                      INTEGER:,   "The type of sensor."}
+			#EMD-MIB::externalOnOffSensorSubtype
+            {ai,        -Cont,      -1:,    "#sensor-subtype",              EMD-MIB::externalOnOffSensorSubtype.1,              INTEGER:,   "The subtype of the binary sensor."}
+            {ai,        -Cont,      -2:,    "#sensor-subtype",              EMD-MIB::externalOnOffSensorSubtype.2,              INTEGER:,   "The subtype of the binary sensor."}
+            {ai,        -TT,        -3:,    "#sensor-subtype",              EMD-MIB::externalOnOffSensorSubtype.3,              INTEGER:,   "The subtype of the binary sensor."}
+            {ai,        -SmD,       -4:,    "#sensor-subtype",              EMD-MIB::externalOnOffSensorSubtype.4,              INTEGER:,   "The subtype of the binary sensor."}
+            {ai,        -Cont,      -5:,    "#sensor-subtype",              EMD-MIB::externalOnOffSensorSubtype.5,              INTEGER:,   "The subtype of the binary sensor."}
+			#EMD-MIB::measurementsExternalSensorValue
+			#EMD-MIB::externalSensorUnits
+            {longin,    -Cont,      -1:,    "#sensor-egu",                  EMD-MIB::externalSensorUnits.1,                     INTEGER:,   "The unit in which the sensor reading i"}
+            {longin,    -Cont,      -2:,    "#sensor-egu",                  EMD-MIB::externalSensorUnits.2,                     INTEGER:,   "The unit in which the sensor reading i"}
+            {longin,    -TT,        -3:,    "#sensor-egu",                  EMD-MIB::externalSensorUnits.3,                     INTEGER:,   "The unit in which the sensor reading i"}
+            {longin,    -SmD,       -4:,    "#sensor-egu",                  EMD-MIB::externalSensorUnits.4,                     INTEGER:,   "The unit in which the sensor reading i"}
+            {longin,    -Cont,      -5:,    "#sensor-egu",                  EMD-MIB::externalSensorUnits.5,                     INTEGER:,   "The unit in which the sensor reading i"}
+			#EMD-MIB::externalSensorDecimalDigits
+            {ai,        -Cont,      -1:,    "#sensor-dd",                   EMD-MIB::externalSensorDecimalDigits.1,             Gauge32:,   "The number of digits displayed to the "}
+            {ai,        -Cont,      -2:,    "#sensor-dd",                   EMD-MIB::externalSensorDecimalDigits.2,             Gauge32:,   "The number of digits displayed to the "}
+            {ai,        -TT,        -3:,    "#sensor-dd",                   EMD-MIB::externalSensorDecimalDigits.3,             Gauge32:,   "The number of digits displayed to the "}
+            {ai,        -SmD,       -4:,    "#sensor-dd",                   EMD-MIB::externalSensorDecimalDigits.4,             Gauge32:,   "The number of digits displayed to the "}
+            {ai,        -Cont,      -5:,    "#sensor-dd",                   EMD-MIB::externalSensorDecimalDigits.5,             Gauge32:,   "The number of digits displayed to the "}
+			#EMD-MIB::externalSensorMinimum
+            {ai,        -Cont,      -1:,    "#sensor-lopr",                 EMD-MIB::externalSensorMinimum.1,                   INTEGER:,   "The smallest possible value"}
+            {ai,        -Cont,      -2:,    "#sensor-lopr",                 EMD-MIB::externalSensorMinimum.2,                   INTEGER:,   "The smallest possible value"}
+            {ai,        -TT,        -3:,    "#sensor-lopr",                 EMD-MIB::externalSensorMinimum.3,                   INTEGER:,   "The smallest possible value"}
+            {ai,        -SmD,       -4:,    "#sensor-lopr",                 EMD-MIB::externalSensorMinimum.4,                   INTEGER:,   "The smallest possible value"}
+            {ai,        -Cont,      -5:,    "#sensor-lopr",                 EMD-MIB::externalSensorMinimum.5,                   INTEGER:,   "The smallest possible value"}
+			#EMD-MIB::externalSensorLowerCriticalThreshold
+            {ai,        -Cont,      -1:,    "#sensor-lolo",                 EMD-MIB::externalSensorLowerCriticalThreshold.1,    INTEGER:,   "The lower critical threshold"}
+            {ai,        -Cont,      -2:,    "#sensor-lolo",                 EMD-MIB::externalSensorLowerCriticalThreshold.2,    INTEGER:,   "The lower critical threshold"}
+            {ai,        -TT,        -3:,    "#sensor-lolo",                 EMD-MIB::externalSensorLowerCriticalThreshold.3,    INTEGER:,   "The lower critical threshold"}
+            {ai,        -SmD,       -4:,    "#sensor-lolo",                 EMD-MIB::externalSensorLowerCriticalThreshold.4,    INTEGER:,   "The lower critical threshold"}
+            {ai,        -Cont,      -5:,    "#sensor-lolo",                 EMD-MIB::externalSensorLowerCriticalThreshold.5,    INTEGER:,   "The lower critical threshold"}
+			#EMD-MIB::externalSensorLowerWarningThreshold
+            {ai,        -Cont,      -1:,    "#sensor-low",                  EMD-MIB::externalSensorLowerWarningThreshold.1,     INTEGER:,   "The lower warning threshold"}
+            {ai,        -Cont,      -2:,    "#sensor-low",                  EMD-MIB::externalSensorLowerWarningThreshold.2,     INTEGER:,   "The lower warning threshold"}
+            {ai,        -TT,        -3:,    "#sensor-low",                  EMD-MIB::externalSensorLowerWarningThreshold.3,     INTEGER:,   "The lower warning threshold"}
+            {ai,        -SmD,       -4:,    "#sensor-low",                  EMD-MIB::externalSensorLowerWarningThreshold.4,     INTEGER:,   "The lower warning threshold"}
+            {ai,        -Cont,      -5:,    "#sensor-low",                  EMD-MIB::externalSensorLowerWarningThreshold.5,     INTEGER:,   "The lower warning threshold"}
+			#EMD-MIB::externalSensorMaximum
+            {ai,        -Cont,      -1:,    "#sensor-hopr",                 EMD-MIB::externalSensorMaximum.1,                   INTEGER:,   "The largest possible value"}
+            {ai,        -Cont,      -2:,    "#sensor-hopr",                 EMD-MIB::externalSensorMaximum.2,                   INTEGER:,   "The largest possible value"}
+            {ai,        -TT,        -3:,    "#sensor-hopr",                 EMD-MIB::externalSensorMaximum.3,                   INTEGER:,   "The largest possible value"}
+            {ai,        -SmD,       -4:,    "#sensor-hopr",                 EMD-MIB::externalSensorMaximum.4,                   INTEGER:,   "The largest possible value"}
+            {ai,        -Cont,      -5:,    "#sensor-hopr",                 EMD-MIB::externalSensorMaximum.5,                   INTEGER:,   "The largest possible value"}
+			#EMD-MIB::externalSensorUpperCriticalThreshold
+            {ai,        -Cont,      -1:,    "#sensor-hihi",                 EMD-MIB::externalSensorUpperCriticalThreshold.1,    INTEGER:,   "The upper critical threshold"}
+            {ai,        -Cont,      -2:,    "#sensor-hihi",                 EMD-MIB::externalSensorUpperCriticalThreshold.2,    INTEGER:,   "The upper critical threshold"}
+            {ai,        -TT,        -3:,    "#sensor-hihi",                 EMD-MIB::externalSensorUpperCriticalThreshold.3,    INTEGER:,   "The upper critical threshold"}
+            {ai,        -SmD,       -4:,    "#sensor-hihi",                 EMD-MIB::externalSensorUpperCriticalThreshold.4,    INTEGER:,   "The upper critical threshold"}
+            {ai,        -Cont,      -5:,    "#sensor-hihi",                 EMD-MIB::externalSensorUpperCriticalThreshold.5,    INTEGER:,   "The upper critical threshold"}
+			#EMD-MIB::externalSensorUpperWarningThreshold
+            {ai,        -Cont,      -1:,    "#sensor-high",                 EMD-MIB::externalSensorUpperWarningThreshold.1,     INTEGER:,   "The upper warning threshold"}
+            {ai,        -Cont,      -2:,    "#sensor-high",                 EMD-MIB::externalSensorUpperWarningThreshold.2,     INTEGER:,   "The upper warning threshold"}
+            {ai,        -TT,        -3:,    "#sensor-high",                 EMD-MIB::externalSensorUpperWarningThreshold.3,     INTEGER:,   "The upper warning threshold"}
+            {ai,        -SmD,       -4:,    "#sensor-high",                 EMD-MIB::externalSensorUpperWarningThreshold.4,     INTEGER:,   "The upper warning threshold"}
+            {ai,        -Cont,      -5:,    "#sensor-high",                 EMD-MIB::externalSensorUpperWarningThreshold.5,     INTEGER:,   "The upper warning threshold"}
+			#LHX-MIB::fwVersion
+            {stringin,  -EMX,       -5:,    "firmwareVersion",              LHX-MIB::fwVersion.5,                               STRING:,    "The firmware version of an LHX control"}
+			#LHX-MIB::model
+            {stringin,  -EMX,       -5:,    "model",                        LHX-MIB::model.5,                                   STRING:,    "The model indentifier of an LHX contro"}
+			#LHX-MIB::sensorName
+            {stringin,  -EMX,       -501:,  "#sensor-type",                 LHX-MIB::sensorName.5.0.1,                          STRING:,    "The descriptive ID of the sensor (e.g."}
+            {stringin,  -EMX,       -502:,  "#sensor-type",                 LHX-MIB::sensorName.5.0.2,                          STRING:,    "The descriptive ID of the sensor (e.g."}
+            {stringin,  -EMX,       -503:,  "#sensor-type",                 LHX-MIB::sensorName.5.0.3,                          STRING:,    "The descriptive ID of the sensor (e.g."}
+            {stringin,  -EMX,       -504:,  "#sensor-type",                 LHX-MIB::sensorName.5.0.4,                          STRING:,    "The descriptive ID of the sensor (e.g."}
+            {stringin,  -EMX,       -505:,  "#sensor-type",                 LHX-MIB::sensorName.5.0.5,                          STRING:,    "The descriptive ID of the sensor (e.g."}
+            {stringin,  -EMX,       -506:,  "#sensor-type",                 LHX-MIB::sensorName.5.0.6,                          STRING:,    "The descriptive ID of the sensor (e.g."}
+            {stringin,  -EMX,       -507:,  "#sensor-type",                 LHX-MIB::sensorName.5.0.7,                          STRING:,    "The descriptive ID of the sensor (e.g."}
+            {stringin,  -EMX,       -511:,  "#sensor-type",                 LHX-MIB::sensorName.5.1.1,                          STRING:,    "The descriptive ID of the sensor (e.g."}
+            {stringin,  -EMX,       -521:,  "#sensor-type",                 LHX-MIB::sensorName.5.2.1,                          STRING:,    "The descriptive ID of the sensor (e.g."}
+            {stringin,  -EMX,       -522:,  "#sensor-type",                 LHX-MIB::sensorName.5.2.2,                          STRING:,    "The descriptive ID of the sensor (e.g."}
+            {stringin,  -EMX,       -523:,  "#sensor-type",                 LHX-MIB::sensorName.5.2.3,                          STRING:,    "The descriptive ID of the sensor (e.g."}
+            {stringin,  -EMX,       -524:,  "#sensor-type",                 LHX-MIB::sensorName.5.2.4,                          STRING:,    "The descriptive ID of the sensor (e.g."}
+            {stringin,  -EMX,       -525:,  "#sensor-type",                 LHX-MIB::sensorName.5.2.5,                          STRING:,    "The descriptive ID of the sensor (e.g."}
+            {stringin,  -EMX,       -526:,  "#sensor-type",                 LHX-MIB::sensorName.5.2.6,                          STRING:,    "The descriptive ID of the sensor (e.g."}
+            {stringin,  -EMX,       -541:,  "#sensor-type",                 LHX-MIB::sensorName.5.4.1,                          STRING:,    "The descriptive ID of the sensor (e.g."}
+			#LHX-MIB::measurementsSensorValue
+			#LHX-MIB::sensorUnit
+            {longin,    -EMX,       -501:,  "#sensor-egu",                  LHX-MIB::sensorUnit.5.0.1,                          INTEGER:,   "The base units."}
+            {longin,    -EMX,       -502:,  "#sensor-egu",                  LHX-MIB::sensorUnit.5.0.2,                          INTEGER:,   "The base units."}
+            {longin,    -EMX,       -503:,  "#sensor-egu",                  LHX-MIB::sensorUnit.5.0.3,                          INTEGER:,   "The base units."}
+            {longin,    -EMX,       -504:,  "#sensor-egu",                  LHX-MIB::sensorUnit.5.0.4,                          INTEGER:,   "The base units."}
+            {longin,    -EMX,       -505:,  "#sensor-egu",                  LHX-MIB::sensorUnit.5.0.5,                          INTEGER:,   "The base units."}
+            {longin,    -EMX,       -506:,  "#sensor-egu",                  LHX-MIB::sensorUnit.5.0.6,                          INTEGER:,   "The base units."}
+            {longin,    -EMX,       -507:,  "#sensor-egu",                  LHX-MIB::sensorUnit.5.0.7,                          INTEGER:,   "The base units."}
+            {longin,    -EMX,       -511:,  "#sensor-egu",                  LHX-MIB::sensorUnit.5.1.1,                          INTEGER:,   "The base units."}
+            {longin,    -EMX,       -521:,  "#sensor-egu",                  LHX-MIB::sensorUnit.5.2.1,                          INTEGER:,   "The base units."}
+            {longin,    -EMX,       -522:,  "#sensor-egu",                  LHX-MIB::sensorUnit.5.2.2,                          INTEGER:,   "The base units."}
+            {longin,    -EMX,       -523:,  "#sensor-egu",                  LHX-MIB::sensorUnit.5.2.3,                          INTEGER:,   "The base units."}
+            {longin,    -EMX,       -524:,  "#sensor-egu",                  LHX-MIB::sensorUnit.5.2.4,                          INTEGER:,   "The base units."}
+            {longin,    -EMX,       -525:,  "#sensor-egu",                  LHX-MIB::sensorUnit.5.2.5,                          INTEGER:,   "The base units."}
+            {longin,    -EMX,       -526:,  "#sensor-egu",                  LHX-MIB::sensorUnit.5.2.6,                          INTEGER:,   "The base units."}
+            {longin,    -EMX,       -541:,  "#sensor-egu",                  LHX-MIB::sensorUnit.5.4.1,                          INTEGER:,   "The base units."}
+			#LHX-MIB::sensorDecimalDigits
+            {ai,        -EMX,       -501:,  "#sensor-dd",                   LHX-MIB::sensorDecimalDigits.5.0.1,                 Gauge32:,   "The number of digits displayed to the "}
+            {ai,        -EMX,       -502:,  "#sensor-dd",                   LHX-MIB::sensorDecimalDigits.5.0.2,                 Gauge32:,   "The number of digits displayed to the "}
+            {ai,        -EMX,       -503:,  "#sensor-dd",                   LHX-MIB::sensorDecimalDigits.5.0.3,                 Gauge32:,   "The number of digits displayed to the "}
+            {ai,        -EMX,       -504:,  "#sensor-dd",                   LHX-MIB::sensorDecimalDigits.5.0.4,                 Gauge32:,   "The number of digits displayed to the "}
+            {ai,        -EMX,       -505:,  "#sensor-dd",                   LHX-MIB::sensorDecimalDigits.5.0.5,                 Gauge32:,   "The number of digits displayed to the "}
+            {ai,        -EMX,       -506:,  "#sensor-dd",                   LHX-MIB::sensorDecimalDigits.5.0.6,                 Gauge32:,   "The number of digits displayed to the "}
+            {ai,        -EMX,       -507:,  "#sensor-dd",                   LHX-MIB::sensorDecimalDigits.5.0.7,                 Gauge32:,   "The number of digits displayed to the "}
+            {ai,        -EMX,       -511:,  "#sensor-dd",                   LHX-MIB::sensorDecimalDigits.5.1.1,                 Gauge32:,   "The number of digits displayed to the "}
+            {ai,        -EMX,       -521:,  "#sensor-dd",                   LHX-MIB::sensorDecimalDigits.5.2.1,                 Gauge32:,   "The number of digits displayed to the "}
+            {ai,        -EMX,       -522:,  "#sensor-dd",                   LHX-MIB::sensorDecimalDigits.5.2.2,                 Gauge32:,   "The number of digits displayed to the "}
+            {ai,        -EMX,       -523:,  "#sensor-dd",                   LHX-MIB::sensorDecimalDigits.5.2.3,                 Gauge32:,   "The number of digits displayed to the "}
+            {ai,        -EMX,       -524:,  "#sensor-dd",                   LHX-MIB::sensorDecimalDigits.5.2.4,                 Gauge32:,   "The number of digits displayed to the "}
+            {ai,        -EMX,       -525:,  "#sensor-dd",                   LHX-MIB::sensorDecimalDigits.5.2.5,                 Gauge32:,   "The number of digits displayed to the "}
+            {ai,        -EMX,       -526:,  "#sensor-dd",                   LHX-MIB::sensorDecimalDigits.5.2.6,                 Gauge32:,   "The number of digits displayed to the "}
+            {ai,        -EMX,       -541:,  "#sensor-dd",                   LHX-MIB::sensorDecimalDigits.5.4.1,                 Gauge32:,   "The number of digits displayed to the "}
+			#LHX-MIB::sensorMinimum
+            {ai,        -EMX,       -501:,  "#sensor-lopr",                 LHX-MIB::sensorMinimum.5.0.1,                       INTEGER:,   "The smallest possible value."}
+            {ai,        -EMX,       -502:,  "#sensor-lopr",                 LHX-MIB::sensorMinimum.5.0.2,                       INTEGER:,   "The smallest possible value."}
+            {ai,        -EMX,       -503:,  "#sensor-lopr",                 LHX-MIB::sensorMinimum.5.0.3,                       INTEGER:,   "The smallest possible value."}
+            {ai,        -EMX,       -504:,  "#sensor-lopr",                 LHX-MIB::sensorMinimum.5.0.4,                       INTEGER:,   "The smallest possible value."}
+            {ai,        -EMX,       -505:,  "#sensor-lopr",                 LHX-MIB::sensorMinimum.5.0.5,                       INTEGER:,   "The smallest possible value."}
+            {ai,        -EMX,       -506:,  "#sensor-lopr",                 LHX-MIB::sensorMinimum.5.0.6,                       INTEGER:,   "The smallest possible value."}
+            {ai,        -EMX,       -507:,  "#sensor-lopr",                 LHX-MIB::sensorMinimum.5.0.7,                       INTEGER:,   "The smallest possible value."}
+            {ai,        -EMX,       -511:,  "#sensor-lopr",                 LHX-MIB::sensorMinimum.5.1.1,                       INTEGER:,   "The smallest possible value."}
+            {ai,        -EMX,       -521:,  "#sensor-lopr",                 LHX-MIB::sensorMinimum.5.2.1,                       INTEGER:,   "The smallest possible value."}
+            {ai,        -EMX,       -522:,  "#sensor-lopr",                 LHX-MIB::sensorMinimum.5.2.2,                       INTEGER:,   "The smallest possible value."}
+            {ai,        -EMX,       -523:,  "#sensor-lopr",                 LHX-MIB::sensorMinimum.5.2.3,                       INTEGER:,   "The smallest possible value."}
+            {ai,        -EMX,       -524:,  "#sensor-lopr",                 LHX-MIB::sensorMinimum.5.2.4,                       INTEGER:,   "The smallest possible value."}
+            {ai,        -EMX,       -525:,  "#sensor-lopr",                 LHX-MIB::sensorMinimum.5.2.5,                       INTEGER:,   "The smallest possible value."}
+            {ai,        -EMX,       -526:,  "#sensor-lopr",                 LHX-MIB::sensorMinimum.5.2.6,                       INTEGER:,   "The smallest possible value."}
+            {ai,        -EMX,       -541:,  "#sensor-lopr",                 LHX-MIB::sensorMinimum.5.4.1,                       INTEGER:,   "The smallest possible value."}
+			#LHX-MIB::sensorLowerCriticalThreshold
+            {ai,        -EMX,       -501:,  "#sensor-lolo",                 LHX-MIB::sensorLowerCriticalThreshold.5.0.1,        INTEGER:,   "The lower critical threshold."}
+            {ai,        -EMX,       -502:,  "#sensor-lolo",                 LHX-MIB::sensorLowerCriticalThreshold.5.0.2,        INTEGER:,   "The lower critical threshold."}
+            {ai,        -EMX,       -503:,  "#sensor-lolo",                 LHX-MIB::sensorLowerCriticalThreshold.5.0.3,        INTEGER:,   "The lower critical threshold."}
+            {ai,        -EMX,       -504:,  "#sensor-lolo",                 LHX-MIB::sensorLowerCriticalThreshold.5.0.4,        INTEGER:,   "The lower critical threshold."}
+            {ai,        -EMX,       -505:,  "#sensor-lolo",                 LHX-MIB::sensorLowerCriticalThreshold.5.0.5,        INTEGER:,   "The lower critical threshold."}
+            {ai,        -EMX,       -506:,  "#sensor-lolo",                 LHX-MIB::sensorLowerCriticalThreshold.5.0.6,        INTEGER:,   "The lower critical threshold."}
+            {ai,        -EMX,       -507:,  "#sensor-lolo",                 LHX-MIB::sensorLowerCriticalThreshold.5.0.7,        INTEGER:,   "The lower critical threshold."}
+            {ai,        -EMX,       -511:,  "#sensor-lolo",                 LHX-MIB::sensorLowerCriticalThreshold.5.1.1,        INTEGER:,   "The lower critical threshold."}
+            {ai,        -EMX,       -521:,  "#sensor-lolo",                 LHX-MIB::sensorLowerCriticalThreshold.5.2.1,        INTEGER:,   "The lower critical threshold."}
+            {ai,        -EMX,       -522:,  "#sensor-lolo",                 LHX-MIB::sensorLowerCriticalThreshold.5.2.2,        INTEGER:,   "The lower critical threshold."}
+            {ai,        -EMX,       -523:,  "#sensor-lolo",                 LHX-MIB::sensorLowerCriticalThreshold.5.2.3,        INTEGER:,   "The lower critical threshold."}
+            {ai,        -EMX,       -524:,  "#sensor-lolo",                 LHX-MIB::sensorLowerCriticalThreshold.5.2.4,        INTEGER:,   "The lower critical threshold."}
+            {ai,        -EMX,       -525:,  "#sensor-lolo",                 LHX-MIB::sensorLowerCriticalThreshold.5.2.5,        INTEGER:,   "The lower critical threshold."}
+            {ai,        -EMX,       -526:,  "#sensor-lolo",                 LHX-MIB::sensorLowerCriticalThreshold.5.2.6,        INTEGER:,   "The lower critical threshold."}
+            {ai,        -EMX,       -541:,  "#sensor-lolo",                 LHX-MIB::sensorLowerCriticalThreshold.5.4.1,        INTEGER:,   "The lower critical threshold."}
+			#LHX-MIB::sensorLowerWarningThreshold
+            {ai,        -EMX,       -501:,  "#sensor-low",                  LHX-MIB::sensorLowerWarningThreshold.5.0.1,         INTEGER:,   "The lower non-critical (warning) thres"}
+            {ai,        -EMX,       -502:,  "#sensor-low",                  LHX-MIB::sensorLowerWarningThreshold.5.0.2,         INTEGER:,   "The lower non-critical (warning) thres"}
+            {ai,        -EMX,       -503:,  "#sensor-low",                  LHX-MIB::sensorLowerWarningThreshold.5.0.3,         INTEGER:,   "The lower non-critical (warning) thres"}
+            {ai,        -EMX,       -504:,  "#sensor-low",                  LHX-MIB::sensorLowerWarningThreshold.5.0.4,         INTEGER:,   "The lower non-critical (warning) thres"}
+            {ai,        -EMX,       -505:,  "#sensor-low",                  LHX-MIB::sensorLowerWarningThreshold.5.0.5,         INTEGER:,   "The lower non-critical (warning) thres"}
+            {ai,        -EMX,       -506:,  "#sensor-low",                  LHX-MIB::sensorLowerWarningThreshold.5.0.6,         INTEGER:,   "The lower non-critical (warning) thres"}
+            {ai,        -EMX,       -507:,  "#sensor-low",                  LHX-MIB::sensorLowerWarningThreshold.5.0.7,         INTEGER:,   "The lower non-critical (warning) thres"}
+            {ai,        -EMX,       -511:,  "#sensor-low",                  LHX-MIB::sensorLowerWarningThreshold.5.1.1,         INTEGER:,   "The lower non-critical (warning) thres"}
+            {ai,        -EMX,       -521:,  "#sensor-low",                  LHX-MIB::sensorLowerWarningThreshold.5.2.1,         INTEGER:,   "The lower non-critical (warning) thres"}
+            {ai,        -EMX,       -522:,  "#sensor-low",                  LHX-MIB::sensorLowerWarningThreshold.5.2.2,         INTEGER:,   "The lower non-critical (warning) thres"}
+            {ai,        -EMX,       -523:,  "#sensor-low",                  LHX-MIB::sensorLowerWarningThreshold.5.2.3,         INTEGER:,   "The lower non-critical (warning) thres"}
+            {ai,        -EMX,       -524:,  "#sensor-low",                  LHX-MIB::sensorLowerWarningThreshold.5.2.4,         INTEGER:,   "The lower non-critical (warning) thres"}
+            {ai,        -EMX,       -525:,  "#sensor-low",                  LHX-MIB::sensorLowerWarningThreshold.5.2.5,         INTEGER:,   "The lower non-critical (warning) thres"}
+            {ai,        -EMX,       -526:,  "#sensor-low",                  LHX-MIB::sensorLowerWarningThreshold.5.2.6,         INTEGER:,   "The lower non-critical (warning) thres"}
+            {ai,        -EMX,       -541:,  "#sensor-low",                  LHX-MIB::sensorLowerWarningThreshold.5.4.1,         INTEGER:,   "The lower non-critical (warning) thres"}
+			#LHX-MIB::sensorMaximum
+            {ai,        -EMX,       -501:,  "#sensor-hopr",                 LHX-MIB::sensorMaximum.5.0.1,                       INTEGER:,   "The largest possible value."}
+            {ai,        -EMX,       -502:,  "#sensor-hopr",                 LHX-MIB::sensorMaximum.5.0.2,                       INTEGER:,   "The largest possible value."}
+            {ai,        -EMX,       -503:,  "#sensor-hopr",                 LHX-MIB::sensorMaximum.5.0.3,                       INTEGER:,   "The largest possible value."}
+            {ai,        -EMX,       -504:,  "#sensor-hopr",                 LHX-MIB::sensorMaximum.5.0.4,                       INTEGER:,   "The largest possible value."}
+            {ai,        -EMX,       -505:,  "#sensor-hopr",                 LHX-MIB::sensorMaximum.5.0.5,                       INTEGER:,   "The largest possible value."}
+            {ai,        -EMX,       -506:,  "#sensor-hopr",                 LHX-MIB::sensorMaximum.5.0.6,                       INTEGER:,   "The largest possible value."}
+            {ai,        -EMX,       -507:,  "#sensor-hopr",                 LHX-MIB::sensorMaximum.5.0.7,                       INTEGER:,   "The largest possible value."}
+            {ai,        -EMX,       -511:,  "#sensor-hopr",                 LHX-MIB::sensorMaximum.5.1.1,                       INTEGER:,   "The largest possible value."}
+            {ai,        -EMX,       -521:,  "#sensor-hopr",                 LHX-MIB::sensorMaximum.5.2.1,                       INTEGER:,   "The largest possible value."}
+            {ai,        -EMX,       -522:,  "#sensor-hopr",                 LHX-MIB::sensorMaximum.5.2.2,                       INTEGER:,   "The largest possible value."}
+            {ai,        -EMX,       -523:,  "#sensor-hopr",                 LHX-MIB::sensorMaximum.5.2.3,                       INTEGER:,   "The largest possible value."}
+            {ai,        -EMX,       -524:,  "#sensor-hopr",                 LHX-MIB::sensorMaximum.5.2.4,                       INTEGER:,   "The largest possible value."}
+            {ai,        -EMX,       -525:,  "#sensor-hopr",                 LHX-MIB::sensorMaximum.5.2.5,                       INTEGER:,   "The largest possible value."}
+            {ai,        -EMX,       -526:,  "#sensor-hopr",                 LHX-MIB::sensorMaximum.5.2.6,                       INTEGER:,   "The largest possible value."}
+            {ai,        -EMX,       -541:,  "#sensor-hopr",                 LHX-MIB::sensorMaximum.5.4.1,                       INTEGER:,   "The largest possible value."}
+			#LHX-MIB::sensorUpperCriticalThreshold
+            {ai,        -EMX,       -501:,  "#sensor-hihi",                 LHX-MIB::sensorUpperCriticalThreshold.5.0.1,        INTEGER:,   "The upper critical  threshold."}
+            {ai,        -EMX,       -502:,  "#sensor-hihi",                 LHX-MIB::sensorUpperCriticalThreshold.5.0.2,        INTEGER:,   "The upper critical  threshold."}
+            {ai,        -EMX,       -503:,  "#sensor-hihi",                 LHX-MIB::sensorUpperCriticalThreshold.5.0.3,        INTEGER:,   "The upper critical  threshold."}
+            {ai,        -EMX,       -504:,  "#sensor-hihi",                 LHX-MIB::sensorUpperCriticalThreshold.5.0.4,        INTEGER:,   "The upper critical  threshold."}
+            {ai,        -EMX,       -505:,  "#sensor-hihi",                 LHX-MIB::sensorUpperCriticalThreshold.5.0.5,        INTEGER:,   "The upper critical  threshold."}
+            {ai,        -EMX,       -506:,  "#sensor-hihi",                 LHX-MIB::sensorUpperCriticalThreshold.5.0.6,        INTEGER:,   "The upper critical  threshold."}
+            {ai,        -EMX,       -507:,  "#sensor-hihi",                 LHX-MIB::sensorUpperCriticalThreshold.5.0.7,        INTEGER:,   "The upper critical  threshold."}
+            {ai,        -EMX,       -511:,  "#sensor-hihi",                 LHX-MIB::sensorUpperCriticalThreshold.5.1.1,        INTEGER:,   "The upper critical  threshold."}
+            {ai,        -EMX,       -521:,  "#sensor-hihi",                 LHX-MIB::sensorUpperCriticalThreshold.5.2.1,        INTEGER:,   "The upper critical  threshold."}
+            {ai,        -EMX,       -522:,  "#sensor-hihi",                 LHX-MIB::sensorUpperCriticalThreshold.5.2.2,        INTEGER:,   "The upper critical  threshold."}
+            {ai,        -EMX,       -523:,  "#sensor-hihi",                 LHX-MIB::sensorUpperCriticalThreshold.5.2.3,        INTEGER:,   "The upper critical  threshold."}
+            {ai,        -EMX,       -524:,  "#sensor-hihi",                 LHX-MIB::sensorUpperCriticalThreshold.5.2.4,        INTEGER:,   "The upper critical  threshold."}
+            {ai,        -EMX,       -525:,  "#sensor-hihi",                 LHX-MIB::sensorUpperCriticalThreshold.5.2.5,        INTEGER:,   "The upper critical  threshold."}
+            {ai,        -EMX,       -526:,  "#sensor-hihi",                 LHX-MIB::sensorUpperCriticalThreshold.5.2.6,        INTEGER:,   "The upper critical  threshold."}
+            {ai,        -EMX,       -541:,  "#sensor-hihi",                 LHX-MIB::sensorUpperCriticalThreshold.5.4.1,        INTEGER:,   "The upper critical  threshold."}
+			#LHX-MIB::sensorUpperWarningThreshold
+            {ai,        -EMX,       -501:,  "#sensor-high",                 LHX-MIB::sensorUpperWarningThreshold.5.0.1,         INTEGER:,   "The upper non-critical (warning) thres"}
+            {ai,        -EMX,       -502:,  "#sensor-high",                 LHX-MIB::sensorUpperWarningThreshold.5.0.2,         INTEGER:,   "The upper non-critical (warning) thres"}
+            {ai,        -EMX,       -503:,  "#sensor-high",                 LHX-MIB::sensorUpperWarningThreshold.5.0.3,         INTEGER:,   "The upper non-critical (warning) thres"}
+            {ai,        -EMX,       -504:,  "#sensor-high",                 LHX-MIB::sensorUpperWarningThreshold.5.0.4,         INTEGER:,   "The upper non-critical (warning) thres"}
+            {ai,        -EMX,       -505:,  "#sensor-high",                 LHX-MIB::sensorUpperWarningThreshold.5.0.5,         INTEGER:,   "The upper non-critical (warning) thres"}
+            {ai,        -EMX,       -506:,  "#sensor-high",                 LHX-MIB::sensorUpperWarningThreshold.5.0.6,         INTEGER:,   "The upper non-critical (warning) thres"}
+            {ai,        -EMX,       -507:,  "#sensor-high",                 LHX-MIB::sensorUpperWarningThreshold.5.0.7,         INTEGER:,   "The upper non-critical (warning) thres"}
+            {ai,        -EMX,       -511:,  "#sensor-high",                 LHX-MIB::sensorUpperWarningThreshold.5.1.1,         INTEGER:,   "The upper non-critical (warning) thres"}
+            {ai,        -EMX,       -521:,  "#sensor-high",                 LHX-MIB::sensorUpperWarningThreshold.5.2.1,         INTEGER:,   "The upper non-critical (warning) thres"}
+            {ai,        -EMX,       -522:,  "#sensor-high",                 LHX-MIB::sensorUpperWarningThreshold.5.2.2,         INTEGER:,   "The upper non-critical (warning) thres"}
+            {ai,        -EMX,       -523:,  "#sensor-high",                 LHX-MIB::sensorUpperWarningThreshold.5.2.3,         INTEGER:,   "The upper non-critical (warning) thres"}
+            {ai,        -EMX,       -524:,  "#sensor-high",                 LHX-MIB::sensorUpperWarningThreshold.5.2.4,         INTEGER:,   "The upper non-critical (warning) thres"}
+            {ai,        -EMX,       -525:,  "#sensor-high",                 LHX-MIB::sensorUpperWarningThreshold.5.2.5,         INTEGER:,   "The upper non-critical (warning) thres"}
+            {ai,        -EMX,       -526:,  "#sensor-high",                 LHX-MIB::sensorUpperWarningThreshold.5.2.6,         INTEGER:,   "The upper non-critical (warning) thres"}
+            {ai,        -EMX,       -541:,  "#sensor-high",                 LHX-MIB::sensorUpperWarningThreshold.5.4.1,         INTEGER:,   "The upper non-critical (warning) thres"}
+}
+file $(TOP)/db/snmp_sensor_pv.template
+{
+    pattern {RECORD_TYPE, DEVICE_TYPE, INDEX, SENSOR_INDEX,  PROPERTY, EGU, OID, MASK, DESC}
+            {ai,        -Cont,      -1:,    -1:,    "On",                           '',         EMD-MIB::measurementsExternalSensorValue.1,         INTEGER:,   "The sensor reading."}
+            {ai,        -Cont,      -2:,    -2:,    "On",                           '',         EMD-MIB::measurementsExternalSensorValue.2,         INTEGER:,   "The sensor reading."}
+            {ai,        -TT,        -3:,    -3:,    "Temperature",                  degreeC,    EMD-MIB::measurementsExternalSensorValue.3,         INTEGER:,   "The sensor reading."}
+            {ai,        -SmD,       -4:,    -4:,    "Tripped",                      '',         EMD-MIB::measurementsExternalSensorValue.4,         INTEGER:,   "The sensor reading."}
+            {ai,        -Cont,      -5:,    -5:,    "On",                           '',         EMD-MIB::measurementsExternalSensorValue.5,         INTEGER:,   "The sensor reading."}
+            {ai,        -EMX,       -501:,  -501:,  "TemperatureCooler",            degreeC,    LHX-MIB::measurementsSensorValue.5.0.1,             INTEGER:,   "The sensor reading."}
+            {ai,        -EMX,       -502:,  -502:,  "TemperatureUpperInlet",        degreeC,    LHX-MIB::measurementsSensorValue.5.0.2,             INTEGER:,   "The sensor reading."}
+            {ai,        -EMX,       -503:,  -503:,  "TemperatureCenterInlet",       degreeC,    LHX-MIB::measurementsSensorValue.5.0.3,             INTEGER:,   "The sensor reading."}
+            {ai,        -EMX,       -504:,  -504:,  "TemperatureLowerInlet",        degreeC,    LHX-MIB::measurementsSensorValue.5.0.4,             INTEGER:,   "The sensor reading."}
+            {ai,        -EMX,       -505:,  -505:,  "TemperatureUpperOutlet",       degreeC,    LHX-MIB::measurementsSensorValue.5.0.5,             INTEGER:,   "The sensor reading."}
+            {ai,        -EMX,       -506:,  -506:,  "TemperatureCenterOutlet",      degreeC,    LHX-MIB::measurementsSensorValue.5.0.6,             INTEGER:,   "The sensor reading."}
+            {ai,        -EMX,       -507:,  -507:,  "TemperatureLowerOutlet",       degreeC,    LHX-MIB::measurementsSensorValue.5.0.7,             INTEGER:,   "The sensor reading."}
+            {ai,        -EMX,       -511:,  -511:,  "TemperatureCoolingWater",      degreeC,    LHX-MIB::measurementsSensorValue.5.1.1,             INTEGER:,   "The sensor reading."}
+            {ai,        -EMX,       -521:,  -521:,  "FanSpeed1",                    rpm,        LHX-MIB::measurementsSensorValue.5.2.1,             INTEGER:,   "The sensor reading."}
+            {ai,        -EMX,       -522:,  -522:,  "FanSpeed2",                    rpm,        LHX-MIB::measurementsSensorValue.5.2.2,             INTEGER:,   "The sensor reading."}
+            {ai,        -EMX,       -523:,  -523:,  "FanSpeed3",                    rpm,        LHX-MIB::measurementsSensorValue.5.2.3,             INTEGER:,   "The sensor reading."}
+            {ai,        -EMX,       -524:,  -524:,  "FanSpeed4",                    rpm,        LHX-MIB::measurementsSensorValue.5.2.4,             INTEGER:,   "The sensor reading."}
+            {ai,        -EMX,       -525:,  -525:,  "FanSpeed5",                    rpm,        LHX-MIB::measurementsSensorValue.5.2.5,             INTEGER:,   "The sensor reading."}
+            {ai,        -EMX,       -526:,  -526:,  "FanSpeed6",                    rpm,        LHX-MIB::measurementsSensorValue.5.2.6,             INTEGER:,   "The sensor reading."}
+            {ai,        -EMX,       -541:,  -541:,  "ValvePosition",                percent,    LHX-MIB::measurementsSensorValue.5.4.1,             INTEGER:,   "The sensor reading."}
+}
