@@ -11,7 +11,7 @@ logger = logging.getLogger()
 logging.basicConfig(format="%(levelname)s:%(message)s", level=logging.DEBUG)
 
 # Standard test fixture
-@pytest.fixture(scope="function")  # use the same IOC for all tests
+@pytest.fixture(scope="session")  # use the same IOC for all tests
 def inst_test(pytestconfig):
 
     # start simulator
