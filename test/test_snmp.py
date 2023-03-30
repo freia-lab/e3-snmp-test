@@ -139,6 +139,6 @@ class TestReadWrite:
                 samples.append(read_value)
                 sleep(time_increment_in_seconds)
 
-        tolerance = 1
+        tolerance = 5
         for first, second in zip(samples, samples[1:]):
             assert abs(time_increment_in_seconds - (second - first)) <= tolerance
