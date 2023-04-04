@@ -6,6 +6,7 @@ from typing import Union
 import pytest
 from run_iocsh import IOC
 from epics import PV
+from test import helpers
 
 logger = logging.getLogger()
 logging.basicConfig(format="%(levelname)s:%(message)s", level=logging.DEBUG)
@@ -15,16 +16,17 @@ logging.basicConfig(format="%(levelname)s:%(message)s", level=logging.DEBUG)
 def inst_test(pytestconfig):
 
     # start simulator
+    data_dir = helpers.TEST_DATA
     sim_proc = subprocess.Popen(
         [
             "snmpsim-command-responder",
-            "--data-dir=./data",
+            f"--data-dir={data_dir}",
             "--agent-udpv4-endpoint=127.0.0.1:1024",
         ]
     )
     sleep(2)
 
-    cmd = pytestconfig.rootpath / "cmds" / "pv_test.cmd"
+    cmd = helpers.TEST_CMDS / "pv_test.cmd"
     ioc = IOC(cmd, ioc_executable="iocsh")
 
     yield ioc
