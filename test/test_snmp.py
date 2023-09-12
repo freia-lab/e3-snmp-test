@@ -1,4 +1,3 @@
-import logging
 import subprocess
 from time import sleep
 from typing import Union
@@ -8,12 +7,9 @@ from run_iocsh import IOC
 from epics import PV
 from test import helpers
 
-logger = logging.getLogger()
-logging.basicConfig(format="%(levelname)s:%(message)s", level=logging.DEBUG)
-
 # Standard test fixture
 @pytest.fixture(scope="session")  # use the same IOC for all tests
-def inst_test(pytestconfig):
+def inst_test():
 
     # start simulator
     data_dir = helpers.TEST_DATA
