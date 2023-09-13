@@ -1,4 +1,3 @@
-import logging
 import subprocess
 from time import sleep
 from typing import Union
@@ -8,12 +7,9 @@ from run_iocsh import IOC
 from epics import PV
 from test import helpers
 
-logger = logging.getLogger()
-logging.basicConfig(format="%(levelname)s:%(message)s", level=logging.DEBUG)
-
 # Standard test fixture
 @pytest.fixture(scope="session")  # use the same IOC for all tests
-def inst_test(pytestconfig):
+def inst_test():
 
     # start simulator
     data_dir = helpers.TEST_DATA
@@ -123,6 +119,42 @@ class TestReadWrite:
             res = pv_read.get(use_monitor=False, timeout=self.pv_wait_in_seconds)
 
         assert res == write_val
+
+    @pytest.mark.parametrize(
+        "pv_name_read, pv_name_write, write_val",
+        [
+            ("TestSnmp:TestInteger-R", "TestSnmp:TestInteger", -5.8),
+            ("TestSnmp:TestInteger-R", "TestSnmp:TestInteger", 9e18),
+            ("TestSnmp:TestEnum-R", "TestSnmp:TestEnum", -3.5),
+            ("TestSnmp:TestEnum-R", "TestSnmp:TestEnum", 9e18),
+            ("TestSnmp:TestGauge32-R", "TestSnmp:TestGauge32", -65.4321),
+            ("TestSnmp:TestGauge32-R", "TestSnmp:TestGauge32", 9e18),
+        ],
+    )
+    def test_invalid_write(
+        self,
+        inst_test: IOC,
+        pv_name_read: str,
+        pv_name_write: str,
+        write_val: Union[int, float],
+    ) -> None:
+
+        ioc = inst_test
+        with ioc:
+            sleep(self.sleep_in_seconds)
+
+            pv_read = PV(pv_name_read)
+            pv_write = PV(pv_name_write)
+
+            pv_write.put(write_val, timeout=self.pv_wait_in_seconds)
+
+            assert not pv_write.put_complete
+
+            sleep(self.pv_wait_in_seconds)
+
+            res = pv_read.get(use_monitor=False, timeout=self.pv_wait_in_seconds)
+
+        assert res != write_val
 
     def test_read_counter(self, inst_test: IOC):
 
