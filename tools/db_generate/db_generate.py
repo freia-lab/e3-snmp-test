@@ -18,7 +18,7 @@ logger = logging.getLogger()
 logging.basicConfig(format="%(levelname)s:%(message)s", level=logging.DEBUG)
 
 
-def parse():
+def get_parser():
     parser = argparse.ArgumentParser(
         formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )
@@ -36,7 +36,60 @@ def parse():
         default="subst/auto_substitution_file.substitution",
         help="Name and path of substitution file",
     )
-    return parser.parse_args()
+
+    parser.add_argument(
+        "--version",
+        "-v",
+        choices=["2c", "3"],
+        default="2c",
+        help="SNMP version",
+    )
+
+    # Options for SNMPv3
+
+    parser.add_argument(
+        "--user",
+        "-u",
+        help="Security name",
+    )
+
+    parser.add_argument(
+        "--authentication_protocol",
+        "-a",
+        choices=["MD5", "SSH"],
+        default="MD5",
+        help="Authentication protocol",
+    )
+
+    parser.add_argument(
+        "--authentication_protocol_pass_phrase",
+        "-A",
+        help="Authentication protocol pass phrase",
+    )
+
+    parser.add_argument(
+        "--level",
+        "-l",
+        choices=["noAuthNoPriv", "authNoPriv", "authPriv"],
+        default="authPriv",
+        help="Security level",
+    )
+
+    parser.add_argument(
+        "--privacy_protocol",
+        "-x",
+        choices=["DES", "AES"],
+        default="DES",
+        help="Privacy protocol",
+    )
+
+    parser.add_argument(
+        "--privacy_protocol_pass_phase",
+        "-X",
+        help="Privacy protocol pass phrase",
+    )
+
+    return parser
 
 
 class OID:
@@ -254,8 +307,28 @@ def parse_through_mib_dict(
                         f.writelines(record + "\n")
 
 
+def check_version_args(args):
+    # Check if required security options are provided
+    # for SNMP v3
+    args_correct, info = True, ""
+    if args.version == "3":
+        if args.user is None:
+            args_correct, info = False, "User if required for v3"
+        elif args.authentication_protocol_pass_phrase is None:
+            args_correct, info = False, "Authentication protocol pass phrase " \
+                                        "is required for v3"
+        elif args.authentication_protocol_pass_phrase is None:
+            args_correct, info = False, "Authentication protocol pass phrase " \
+                                        "is required for v3"
+        elif args.privacy_protocol_pass_phase is None:
+            args_correct, info = False, "Privact protocol pass phrase " \
+                                        "is required for v3"
+
+    return args_correct, info
+
+
 def main(args):
-    snmphandler = SnmpHandler(logger, args.host_ip)
+    snmphandler = SnmpHandler(logger, args)
 
     # For some devices it is necessary to parse through multiple mib files,
     # e.g. for the EMX both EMD-MIB and LHX-MIB are used.
@@ -319,5 +392,11 @@ def main(args):
 
 
 if __name__ == "__main__":
-    args = parse()
+    parser = get_parser()
+    args = parser.parse_args()
+
+    args_correct, info = check_version_args(args)
+    if not args_correct:
+        parser.error(info)
+
     main(args)
