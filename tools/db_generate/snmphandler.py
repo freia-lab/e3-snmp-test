@@ -24,7 +24,6 @@ class SnmpHandler:
         self.arg_options = self.get_snmpwalk_options(args)
 
     def get_snmpwalk_options(self, args):
-        snmpwalk_options = ""
         if args.version == "2c":
             snmpwalk_options = "-c public"
         elif args.version == "3":
