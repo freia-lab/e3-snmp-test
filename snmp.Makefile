@@ -1,8 +1,6 @@
 where_am_I := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 include $(E3_REQUIRE_TOOLS)/driver.makefile
 
-
-
 EXCLUDE_ARCHS = linux-ppc64e6500
 EXCLUDE_ARCHS += linux-corei7-poky
 
