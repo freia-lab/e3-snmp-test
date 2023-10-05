@@ -7,7 +7,6 @@ global {
        LHX_ID=$(LHX_UNIT)
        }
 
-
 file "$(DB_TOP)/raritan-emx-lhx-unit-sensor-unit.template" {
 pattern { SENSOR_NAME,  SENSOR_ID, SENSOR_SUBID }
 { "AirTemp", 0, 1 }
