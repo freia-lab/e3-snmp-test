@@ -1,19 +1,12 @@
-# Test Setup - snmp
-**/test** contains the sources for the automatic testing of the e3-snmp module.
+# Test setup
 
 ## Prerequisites
-In order to run the test suite, you must install the following:
 
- * python3
+Python3.7 or higher is required. Other dependencies are listed in `./test/requirements.txt`.
 
-Python >= 3.7 is required.
+You must also have an e3 environment activated before running the tests.
 
-And the python modules listed in requirements.txt:
-
-You must configure the EPICS environment before running the test suite.
-For the e3 environment, this requires you to ``source setE3Env.bash``.
-
-## Test Suite Components
+## Components
 
 The test setup consists of three main components:
 
@@ -45,9 +38,10 @@ The following records are defined:
 
 
 Startup scripts and database files are provided in the
-cmd/ and db/ subdirectories.
+`cmd/` and `db/` subdirectories.
 
 ## Python Test Files
+
 The pytest framework [2] is used to implement the test cases. Individual test cases are provided
 as python functions (defs) in [\(test_snmp.py\)](test_snmp.py). Under the hood,
 run_iocsh [3] and pyepics [4] are used for communication with the test IOC.
@@ -56,6 +50,7 @@ To add a new test case, simply add a new funtion (def) to [\(test_snmp.py\)](tes
 ensuring that the function name begins with the prefix ``test_``
 
 ## References
+
 [1] https://github.com/lextudio/snmpsim
 
 [2] https://docs.pytest.org/en/stable/
