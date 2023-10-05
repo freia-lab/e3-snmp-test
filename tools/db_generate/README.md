@@ -14,7 +14,7 @@ In order to run the script, you must install the following:
 ## MIB files and nodefiles
 The python script requires a dictonary containing the OIDs that you want to parse, together with the EPICS record type of the corresponding PV. See **device_dict.yaml**.
 
-OIDs are found in the MIB file of the device. 
+OIDs are found in the MIB file of the device.
 
 By default, net-snmp loads MIB files from the following directories:
 
@@ -37,6 +37,6 @@ The substitution file follows the pattern:
 and for the sensors:
 ```
 {RECORD_TYPE, DEVICE_TYPE, INDEX, PROPERTY, EGU, OID, MASK, DESC}
-``` 
+```
 
-To get properly named PVs it is recommended to manually edit e.g. DEVICE_TYPE and INDEX. 
+To get properly named PVs it is recommended to manually edit e.g. DEVICE_TYPE and INDEX.

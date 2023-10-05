@@ -2,7 +2,7 @@ SGP_MIB: &SGP_MIB
   'deviceMACAddress':
     oid_root_node: "SGP-MIB::networkInterfaceMacAddress"
     EPICS_record_type: stringin
-  'firmwareVersion': 
+  'firmwareVersion':
     oid_root_node: "SGP-MIB::firmwareVersion"
     EPICS_record_type: stringin
   'hardwareVersion':
@@ -22,7 +22,7 @@ SGP_MIB: &SGP_MIB
     EPICS_record_type: longin
   '#sensor-lopr':
     oid_root_node: "SGP-MIB::externalSensorMinimum"
-    EPICS_record_type: 
+    EPICS_record_type:
   '#sensor-lolo':
     oid_root_node: "SGP-MIB::externalSensorLowerCriticalThreshold"
     EPICS_record_type: ai
@@ -32,7 +32,7 @@ SGP_MIB: &SGP_MIB
   '#sensor-hopr':
     oid_root_node: "SGP-MIB::externalSensorMaximum"
     EPICS_record_type: ai
-  '#sensor-hihi': 
+  '#sensor-hihi':
     oid_root_node: "SGP-MIB::externalSensorUpperCriticalThreshold"
     EPICS_record_type: ai
   '#sensor-high':
@@ -131,9 +131,9 @@ LHX_MIB: &LHX_MIB
     EPICS_record_type: ai
 
 device_mib_dict:
-  nVent: 
+  nVent:
     - *SGP_MIB
-  EMX: 
+  EMX:
     - *EMD_MIB
     - *LHX_MIB
 
