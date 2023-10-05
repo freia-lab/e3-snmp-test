@@ -1,18 +1,16 @@
 
-record(longin, "$(P)Outlet$(OUTLET_ID)-SState-RB_")
-{
+record(longin, "$(P)Outlet$(OUTLET_ID)-SState-RB_") {
     field(DESC, "SNMP channel")
     field(SCAN, "1 second")
     field(DTYP, "Snmp")
-    field( INP, "@$(HOST) $(USER) PDU2-MIB::switchingOperation.1.$(OUTLET_ID)  ( 100 i")
+    field(INP,  "@$(HOST) $(USER) PDU2-MIB::switchingOperation.1.$(OUTLET_ID)  ( 100 i")
     field(LOPR, "0")
     field(HOPR, "1")
 }
 
-record(mbbi, "$(P)Outlet$(OUTLET_ID)-SState-RB")
-{
+record(mbbi, "$(P)Outlet$(OUTLET_ID)-SState-RB") {
     field(DTYP, "Soft Channel")
-    field( INP, "$(P)Outlet$(OUTLET_ID)-SState-RB_ CPP")
+    field(INP,  "$(P)Outlet$(OUTLET_ID)-SState-RB_ CPP")
     field(ZRST, "off")
     field(ZRVL, "0")
     field(ONST, "on")
@@ -35,21 +33,19 @@ record(mbbi, "$(P)Outlet$(OUTLET_ID)-SState-RB")
     field(FLNK, "$(P)Outlet$(OUTLET_ID)-SStateUpdate_")
 }
 
-record(longout, "$(P)Outlet$(OUTLET_ID)-SState-SET_")
-{
+record(longout, "$(P)Outlet$(OUTLET_ID)-SState-SET_") {
     field(DESC, "SNMP channel")
     field(DTYP, "Snmp")
-    field( OUT, "@$(HOST) $(USER) PDU2-MIB::switchingOperation.1.$(OUTLET_ID)  ( 100 i")
+    field(OUT,  "@$(HOST) $(USER) PDU2-MIB::switchingOperation.1.$(OUTLET_ID)  ( 100 i")
     field(LOPR, "0")
     field(DRVL, "0")
     field(HOPR, "1")
     field(DRVH, "1")
 }
 
-record(mbbo, "$(P)Outlet$(OUTLET_ID)-SState-SET")
-{
+record(mbbo, "$(P)Outlet$(OUTLET_ID)-SState-SET") {
     field(DTYP, "Soft Channel")
-    field( OUT, "$(P)Outlet$(OUTLET_ID)-SState-SET_ PP")
+    field(OUT,  "$(P)Outlet$(OUTLET_ID)-SState-SET_ PP")
     field(ZRST, "off")
     field(ZRVL, "0")
     field(ONST, "on")
@@ -71,34 +67,29 @@ record(mbbo, "$(P)Outlet$(OUTLET_ID)-SState-SET")
     field(IVOA, "Don't drive outputs")
 }
 
-
-record(longout, "$(P)Outlet$(OUTLET_ID)-SStateUpdate_")
-{
-    field( DOL, "$(P)Outlet$(OUTLET_ID)-SState-RB NPP")
+record(longout, "$(P)Outlet$(OUTLET_ID)-SStateUpdate_") {
+    field(DOL,  "$(P)Outlet$(OUTLET_ID)-SState-RB NPP")
     field(OMSL, "closed_loop")
-    field( OUT, "$(P)Outlet$(OUTLET_ID)-SState-SET NPP")
+    field(OUT,  "$(P)Outlet$(OUTLET_ID)-SState-SET NPP")
 }
 
-
-record(stringout, "$(P)Outlet$(OUTLET_ID)-Name-SP")
-{
+record(stringout, "$(P)Outlet$(OUTLET_ID)-Name-SP") {
     field(DESC, "Outlet$(OUTLET_ID) Name")
     field(DTYP, "Snmp")
-    field( OUT, "@$(HOST) $(USER) PDU2-MIB::outletName.1.$(OUTLET_ID) STRING: 40")
+    field(OUT,  "@$(HOST) $(USER) PDU2-MIB::outletName.1.$(OUTLET_ID) STRING: 40")
+
     info(autosaveFields, "VAL")
 }
 
-record(stringin, "$(P)Outlet$(OUTLET_ID)-Name-RB")
-{
+record(stringin, "$(P)Outlet$(OUTLET_ID)-Name-RB") {
     field(DESC, "Outlet$(OUTLET_ID) Name")
     field(DTYP, "Snmp")
-    field( INP, "@$(HOST) $(USER) PDU2-MIB::outletName.1.$(OUTLET_ID) STRING: 40")
+    field(INP,  "@$(HOST) $(USER) PDU2-MIB::outletName.1.$(OUTLET_ID) STRING: 40")
     field(FLNK, "$(P)Outlet$(OUTLET_ID)-Name-RB_")
 }
 
-record(stringout, "$(P)Outlet$(OUTLET_ID)-Name-RB_")
-{
-    field( DOL, "$(P)Outlet$(OUTLET_ID)-Name-RB NPP")
+record(stringout, "$(P)Outlet$(OUTLET_ID)-Name-RB_") {
+    field(DOL,  "$(P)Outlet$(OUTLET_ID)-Name-RB NPP")
     field(OMSL, "closed_loop")
-    field( OUT, "$(P)Outlet$(OUTLET_ID)-Name-SP NPP")
+    field(OUT,  "$(P)Outlet$(OUTLET_ID)-Name-SP NPP")
 }

@@ -5,18 +5,16 @@
 # ## so we have to think how to handel SP and RB
 # ## differently.
 
-record(ao, "$(P)LHX$(LHX_ID)-State-SP_")
-{
+record(ao, "$(P)LHX$(LHX_ID)-State-SP_") {
     field(DESC, "SNMP channel")
     field(DTYP, "Snmp")
-    field( OUT, "@$(HOST) $(USER) LHX-MIB::operationalState.$(LHX_ID) ( 100 i")
+    field(OUT,  "@$(HOST) $(USER) LHX-MIB::operationalState.$(LHX_ID) ( 100 i")
     field(FLNK, "$(P)LHX$(LHX_ID)-StateUpdate_")
 }
 
-record(mbbo, "$(P)LHX$(LHX_ID)-State-SP")
-{
+record(mbbo, "$(P)LHX$(LHX_ID)-State-SP") {
     field(DTYP, "Soft Channel")
-    field( OUT, "$(P)LHX$(LHX_ID)-State-SP_ PP CA")
+    field(OUT,  "$(P)LHX$(LHX_ID)-State-SP_ PP CA")
     field(ZRST, "disconnected")
     field(ZRVL, "0")
     field(ONST, "offline")
@@ -39,18 +37,15 @@ record(mbbo, "$(P)LHX$(LHX_ID)-State-SP")
     field(IVOA, "Don't drive outputs")
 }
 
-
-record(ao, "$(P)LHX$(LHX_ID)-StateUpdate_")
-{
-    field( DOL, "$(P)LHX$(LHX_ID)-State-SP_ NPP")
+record(ao, "$(P)LHX$(LHX_ID)-StateUpdate_") {
+    field(DOL,  "$(P)LHX$(LHX_ID)-State-SP_ NPP")
     field(OMSL, "closed_loop")
-    field( OUT, "$(P)LHX$(LHX_ID)-State-SP NPP")
+    field(OUT,  "$(P)LHX$(LHX_ID)-State-SP NPP")
 }
 
-record(mbbi, "$(P)LHX$(LHX_ID)-State-RB")
-{
+record(mbbi, "$(P)LHX$(LHX_ID)-State-RB") {
     field(DTYP, "Soft Channel")
-    field( INP, "$(P)LHX$(LHX_ID)-StateUpdate_ CPP")
+    field(INP,  "$(P)LHX$(LHX_ID)-StateUpdate_ CPP")
     field(ZRST, "disconnected")
     field(ZRVL, "0")
     field(ONST, "offline")
@@ -73,7 +68,6 @@ record(mbbi, "$(P)LHX$(LHX_ID)-State-RB")
     field(UNSV, "INVALID")
 }
 
-
 ## setpointVentilators
 ##  SYNTAX	    	Integer32
 ##  MAX-ACCESS  	read-write
@@ -81,7 +75,6 @@ record(mbbi, "$(P)LHX$(LHX_ID)-State-RB")
 ## setpointWaterValve
 ##    	SYNTAX	    	Integer32
 ##    	MAX-ACCESS  	read-write
-
 
 ##defaultFanSpeed
 ##    	SYNTAX	    	Integer32

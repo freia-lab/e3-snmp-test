@@ -6,30 +6,25 @@
 # Raritan-EMX:ExtSensor$(EXT_SENSOR_ID)-EGU    Illegal Value
 # Raritan-EMX:ExtSensor$(EXT_SENSOR_ID)-EGU    Illegal Value
 
-record(bo, "$(P)ExtSensor$(EXT_SENSOR_ID)Update-Cmd")
-{
+record(bo, "$(P)ExtSensor$(EXT_SENSOR_ID)Update-Cmd") {
     field(DESC, "Update ExtSensor$(EXT_SENSOR_ID) Readbacks")
     field(ZNAM, "Update")
     field(ONAM, "update")
     field(FLNK, "$(P)ExtSensor$(EXT_SENSOR_ID)Update:1-Fout_")
     field(HIGH, "2")
-    field( VAL, "1")
+    field(VAL,  "1")
     field(PINI, "YES")
 }
 
-
-record(fanout, "$(P)ExtSensor$(EXT_SENSOR_ID)Update:1-Fout_")
-{
+record(fanout, "$(P)ExtSensor$(EXT_SENSOR_ID)Update:1-Fout_") {
     field(LNK1, "$(P)ExtSensor$(EXT_SENSOR_ID)-DD_")
     field(LNK2, "$(P)ExtSensor$(EXT_SENSOR_ID)-SN-RB")
     field(LNK3, "$(P)ExtSensor$(EXT_SENSOR_ID)-Type-RB")
     field(LNK4, "$(P)ExtSensor$(EXT_SENSOR_ID)-PORT-RB")
     field(FLNK, "$(P)ExtSensor$(EXT_SENSOR_ID)Update:2-Fout_")
-
 }
 
-record(fanout, "$(P)ExtSensor$(EXT_SENSOR_ID)Update:2-Fout_")
-{
+record(fanout, "$(P)ExtSensor$(EXT_SENSOR_ID)Update:2-Fout_") {
     field(LNK1, "$(P)ExtSensor$(EXT_SENSOR_ID)-EGU-RB")
     field(LNK2, "$(P)ExtSensor$(EXT_SENSOR_ID)-HOPR-RB")
     field(LNK3, "$(P)ExtSensor$(EXT_SENSOR_ID)-LOPR-RB")
@@ -39,8 +34,7 @@ record(fanout, "$(P)ExtSensor$(EXT_SENSOR_ID)Update:2-Fout_")
     field(LNK7, "$(P)ExtSensor$(EXT_SENSOR_ID)-LOLO-RB")
 }
 
-record(calc, "$(P)ExtSensor$(EXT_SENSOR_ID)-RB")
-{
+record(calc, "$(P)ExtSensor$(EXT_SENSOR_ID)-RB") {
     field(DESC, "External Sensor $(EXT_SENSOR_ID)")
     field(INPA, "$(P)ExtSensor$(EXT_SENSOR_ID)-RB_ CPP")
     field(INPB, "$(P)ExtSensor$(EXT_SENSOR_ID)-DD_ NPP")
@@ -48,44 +42,35 @@ record(calc, "$(P)ExtSensor$(EXT_SENSOR_ID)-RB")
 #    field(FLNK, "$(P)ExtSensor$(EXT_SENSOR_ID)-EGU")
 }
 
-
-record(ai, "$(P)ExtSensor$(EXT_SENSOR_ID)-RB_")
-{
+record(ai, "$(P)ExtSensor$(EXT_SENSOR_ID)-RB_") {
     field(DESC, "External Sensor $(EXT_SENSOR_ID)")
     field(DTYP, "Snmp")
     field(SCAN, ".2 second")
     field(PREC, "3")
-    field( INP, "@$(HOST) $(USER) EMD-MIB::measurementsExternalSensorValue.$(EXT_SENSOR_ID) INTEGER: 100")
+    field(INP,  "@$(HOST) $(USER) EMD-MIB::measurementsExternalSensorValue.$(EXT_SENSOR_ID) INTEGER: 100")
 }
 
 #PDU2-MIB::externalSensorDecimalDigits.1.1 = Gauge32: 1
-record(longin, "$(P)ExtSensor$(EXT_SENSOR_ID)-DD_")
-{
+record(longin, "$(P)ExtSensor$(EXT_SENSOR_ID)-DD_") {
     field(DTYP, "Snmp")
-    field( INP, "@$(HOST) $(USER) EMD-MIB::externalSensorDecimalDigits.$(EXT_SENSOR_ID) Gauge32: 100")
+    field(INP,  "@$(HOST) $(USER) EMD-MIB::externalSensorDecimalDigits.$(EXT_SENSOR_ID) Gauge32: 100")
 }
 
-
-record(stringin, "$(P)ExtSensor$(EXT_SENSOR_ID)-SN-RB")
-{
+record(stringin, "$(P)ExtSensor$(EXT_SENSOR_ID)-SN-RB") {
     field(DESC, "Serial Number")
     field(DTYP, "Snmp")
-    field( INP, "@$(HOST) $(USER) EMD-MIB::externalSensorSerialNumber.$(EXT_SENSOR_ID) STRING: 40")
+    field(INP,  "@$(HOST) $(USER) EMD-MIB::externalSensorSerialNumber.$(EXT_SENSOR_ID) STRING: 40")
 }
 
-
-record(longin, "$(P)ExtSensor$(EXT_SENSOR_ID)-Type-RB_")
-{
+record(longin, "$(P)ExtSensor$(EXT_SENSOR_ID)-Type-RB_") {
     field(DESC, "SNMP channel")
     field(DTYP, "Snmp")
-    field( INP, "@$(HOST) $(USER) EMD-MIB::externalSensorType.$(EXT_SENSOR_ID)  ( 100 i")
+    field(INP,  "@$(HOST) $(USER) EMD-MIB::externalSensorType.$(EXT_SENSOR_ID)  ( 100 i")
 }
 
-
-record(mbbi, "$(P)ExtSensor$(EXT_SENSOR_ID)-Type-RB")
-{
+record(mbbi, "$(P)ExtSensor$(EXT_SENSOR_ID)-Type-RB") {
     field(DTYP, "Soft Channel")
-    field( INP, "$(P)ExtSensor$(EXT_SENSOR_ID)-Type-RB_ PP")
+    field(INP,  "$(P)ExtSensor$(EXT_SENSOR_ID)-Type-RB_ PP")
     field(ZRST, "undefined")
     field(ZRVL, "0")
     field(ONST, "rmsCurrent")
@@ -120,20 +105,17 @@ record(mbbi, "$(P)ExtSensor$(EXT_SENSOR_ID)-Type-RB")
     field(FFVL, "15")
 }
 
-
 # EGU can be accessible through SNMP OID
 #
-record(longin, "$(P)ExtSensor$(EXT_SENSOR_ID)-EGU-RB_")
-{
+record(longin, "$(P)ExtSensor$(EXT_SENSOR_ID)-EGU-RB_") {
     field(DESC, "SNMP channel")
     field(DTYP, "Snmp")
-    field( INP, "@$(HOST) $(USER) EMD-MIB::externalSensorUnits.$(EXT_SENSOR_ID)  ( 100 i")
+    field(INP,  "@$(HOST) $(USER) EMD-MIB::externalSensorUnits.$(EXT_SENSOR_ID)  ( 100 i")
 }
 
-record(mbbi, "$(P)ExtSensor$(EXT_SENSOR_ID)-EGU-RB")
-{
+record(mbbi, "$(P)ExtSensor$(EXT_SENSOR_ID)-EGU-RB") {
     field(DTYP, "Soft Channel")
-    field( INP, "$(P)ExtSensor$(EXT_SENSOR_ID)-EGU-RB_ PP")
+    field(INP,  "$(P)ExtSensor$(EXT_SENSOR_ID)-EGU-RB_ PP")
     field(ZRST, "other")
     field(ZRVL, "0")
     field(ONST, "volt")
@@ -169,44 +151,32 @@ record(mbbi, "$(P)ExtSensor$(EXT_SENSOR_ID)-EGU-RB")
     field(FLNK, "$(P)ExtSensor$(EXT_SENSOR_ID)-EGU")
 }
 
-
-
-record(stringout, "$(P)ExtSensor$(EXT_SENSOR_ID)-EGU")
-{
-    field( OUT, "$(P)ExtSensor$(EXT_SENSOR_ID)-RB.EGU NPP")
+record(stringout, "$(P)ExtSensor$(EXT_SENSOR_ID)-EGU") {
+    field(OUT,  "$(P)ExtSensor$(EXT_SENSOR_ID)-RB.EGU NPP")
     field(OMSL, "closed_loop")
-    field( DOL, "$(P)ExtSensor$(EXT_SENSOR_ID)-EGU-RB.VAL NPP")
-
+    field(DOL,  "$(P)ExtSensor$(EXT_SENSOR_ID)-EGU-RB.VAL NPP")
 }
 
-
-
-record(stringin, "$(P)ExtSensor$(EXT_SENSOR_ID)-PORT-RB")
-{
+record(stringin, "$(P)ExtSensor$(EXT_SENSOR_ID)-PORT-RB") {
     field(DESC, "ExtSensor$(EXT_SENSOR_ID) Port")
     field(DTYP, "Snmp")
-    field( INP, "@$(HOST) $(USER) EMD-MIB::externalSensorPort.$(EXT_SENSOR_ID) STRING: 40")
-
+    field(INP,  "@$(HOST) $(USER) EMD-MIB::externalSensorPort.$(EXT_SENSOR_ID) STRING: 40")
 }
 
 # HOPR can be accessible through SNMP OID : externalSensorMaximum
-record(ai, "$(P)ExtSensor$(EXT_SENSOR_ID)-HOPR-RB_")
-{
+record(ai, "$(P)ExtSensor$(EXT_SENSOR_ID)-HOPR-RB_") {
     field(DESC, "External Sensor $(EXT_SENSOR_ID)")
     field(DTYP, "Snmp")
-    field( INP, "@$(HOST) $(USER) EMD-MIB::externalSensorMaximum.$(EXT_SENSOR_ID) INTEGER: 100")
+    field(INP,  "@$(HOST) $(USER) EMD-MIB::externalSensorMaximum.$(EXT_SENSOR_ID) INTEGER: 100")
 }
 
-record(stringout, "$(P)ExtSensor$(EXT_SENSOR_ID)-HOPR")
-{
-    field( OUT, "$(P)ExtSensor$(EXT_SENSOR_ID)-RB.HOPR NPP")
+record(stringout, "$(P)ExtSensor$(EXT_SENSOR_ID)-HOPR") {
+    field(OUT,  "$(P)ExtSensor$(EXT_SENSOR_ID)-RB.HOPR NPP")
     field(OMSL, "closed_loop")
-    field( DOL, "$(P)ExtSensor$(EXT_SENSOR_ID)-HOPR-RB.VAL NPP")
-
+    field(DOL,  "$(P)ExtSensor$(EXT_SENSOR_ID)-HOPR-RB.VAL NPP")
 }
 
-record(calc, "$(P)ExtSensor$(EXT_SENSOR_ID)-HOPR-RB")
-{
+record(calc, "$(P)ExtSensor$(EXT_SENSOR_ID)-HOPR-RB") {
     field(DESC, "External Sensor $(EXT_SENSOR_ID)")
     field(INPA, "$(P)ExtSensor$(EXT_SENSOR_ID)-HOPR-RB_ PP")
     field(INPB, "$(P)ExtSensor$(EXT_SENSOR_ID)-DD_ NPP")
@@ -215,23 +185,19 @@ record(calc, "$(P)ExtSensor$(EXT_SENSOR_ID)-HOPR-RB")
 }
 
 # LOPR can be accessible through SNMP OID : externalSensorMinimum
-record(ai, "$(P)ExtSensor$(EXT_SENSOR_ID)-LOPR-RB_")
-{
+record(ai, "$(P)ExtSensor$(EXT_SENSOR_ID)-LOPR-RB_") {
     field(DESC, "External Sensor $(EXT_SENSOR_ID)")
     field(DTYP, "Snmp")
-    field( INP, "@$(HOST) $(USER) EMD-MIB::externalSensorMinimum.$(EXT_SENSOR_ID) INTEGER: 100")
+    field(INP,  "@$(HOST) $(USER) EMD-MIB::externalSensorMinimum.$(EXT_SENSOR_ID) INTEGER: 100")
 }
 
-record(stringout, "$(P)ExtSensor$(EXT_SENSOR_ID)-LOPR")
-{
-    field( OUT, "$(P)ExtSensor$(EXT_SENSOR_ID)-RB.LOPR NPP")
+record(stringout, "$(P)ExtSensor$(EXT_SENSOR_ID)-LOPR") {
+    field(OUT,  "$(P)ExtSensor$(EXT_SENSOR_ID)-RB.LOPR NPP")
     field(OMSL, "closed_loop")
-    field( DOL, "$(P)ExtSensor$(EXT_SENSOR_ID)-LOPR-RB.VAL NPP")
-
+    field(DOL,  "$(P)ExtSensor$(EXT_SENSOR_ID)-LOPR-RB.VAL NPP")
 }
 
-record(calc, "$(P)ExtSensor$(EXT_SENSOR_ID)-LOPR-RB")
-{
+record(calc, "$(P)ExtSensor$(EXT_SENSOR_ID)-LOPR-RB") {
     field(DESC, "External Sensor $(EXT_SENSOR_ID)")
     field(INPA, "$(P)ExtSensor$(EXT_SENSOR_ID)-LOPR-RB_ PP")
     field(INPB, "$(P)ExtSensor$(EXT_SENSOR_ID)-DD_ NPP")
@@ -239,25 +205,20 @@ record(calc, "$(P)ExtSensor$(EXT_SENSOR_ID)-LOPR-RB")
     field(FLNK, "$(P)ExtSensor$(EXT_SENSOR_ID)-LOPR")
 }
 
-
 # HIHI can be accessible through SNMP OID : externalSensorUpperCriticalThreshold
-record(ai, "$(P)ExtSensor$(EXT_SENSOR_ID)-HIHI-RB_")
-{
+record(ai, "$(P)ExtSensor$(EXT_SENSOR_ID)-HIHI-RB_") {
     field(DESC, "External Sensor $(EXT_SENSOR_ID) HIHI")
     field(DTYP, "Snmp")
-    field( INP, "@$(HOST) $(USER) EMD-MIB::externalSensorUpperCriticalThreshold.$(EXT_SENSOR_ID) INTEGER: 100")
+    field(INP,  "@$(HOST) $(USER) EMD-MIB::externalSensorUpperCriticalThreshold.$(EXT_SENSOR_ID) INTEGER: 100")
 }
 
-record(stringout, "$(P)ExtSensor$(EXT_SENSOR_ID)-HIHI")
-{
-    field( OUT, "$(P)ExtSensor$(EXT_SENSOR_ID)-RB.HIHI NPP")
+record(stringout, "$(P)ExtSensor$(EXT_SENSOR_ID)-HIHI") {
+    field(OUT,  "$(P)ExtSensor$(EXT_SENSOR_ID)-RB.HIHI NPP")
     field(OMSL, "closed_loop")
-    field( DOL, "$(P)ExtSensor$(EXT_SENSOR_ID)-HIHI-RB.VAL NPP")
-
+    field(DOL,  "$(P)ExtSensor$(EXT_SENSOR_ID)-HIHI-RB.VAL NPP")
 }
 
-record(calc, "$(P)ExtSensor$(EXT_SENSOR_ID)-HIHI-RB")
-{
+record(calc, "$(P)ExtSensor$(EXT_SENSOR_ID)-HIHI-RB") {
     field(DESC, "External Sensor $(EXT_SENSOR_ID)")
     field(INPA, "$(P)ExtSensor$(EXT_SENSOR_ID)-HIHI-RB_ PP")
     field(INPB, "$(P)ExtSensor$(EXT_SENSOR_ID)-DD_ NPP")
@@ -265,25 +226,20 @@ record(calc, "$(P)ExtSensor$(EXT_SENSOR_ID)-HIHI-RB")
     field(FLNK, "$(P)ExtSensor$(EXT_SENSOR_ID)-HIHI")
 }
 
-
 # HIGH can be accessible through SNMP OID : externalSensorUpperWarningThreshold
-record(ai, "$(P)ExtSensor$(EXT_SENSOR_ID)-HIGH-RB_")
-{
+record(ai, "$(P)ExtSensor$(EXT_SENSOR_ID)-HIGH-RB_") {
     field(DESC, "External Sensor $(EXT_SENSOR_ID)")
     field(DTYP, "Snmp")
-    field( INP, "@$(HOST) $(USER) EMD-MIB::externalSensorUpperWarningThreshold.$(EXT_SENSOR_ID) INTEGER: 100")
+    field(INP,  "@$(HOST) $(USER) EMD-MIB::externalSensorUpperWarningThreshold.$(EXT_SENSOR_ID) INTEGER: 100")
 }
 
-record(stringout, "$(P)ExtSensor$(EXT_SENSOR_ID)-HIGH")
-{
-    field( OUT, "$(P)ExtSensor$(EXT_SENSOR_ID)-RB.HIGH NPP")
+record(stringout, "$(P)ExtSensor$(EXT_SENSOR_ID)-HIGH") {
+    field(OUT,  "$(P)ExtSensor$(EXT_SENSOR_ID)-RB.HIGH NPP")
     field(OMSL, "closed_loop")
-    field( DOL, "$(P)ExtSensor$(EXT_SENSOR_ID)-HIGH-RB.VAL NPP")
-
+    field(DOL,  "$(P)ExtSensor$(EXT_SENSOR_ID)-HIGH-RB.VAL NPP")
 }
 
-record(calc, "$(P)ExtSensor$(EXT_SENSOR_ID)-HIGH-RB")
-{
+record(calc, "$(P)ExtSensor$(EXT_SENSOR_ID)-HIGH-RB") {
     field(DESC, "External Sensor $(EXT_SENSOR_ID) HIGH")
     field(INPA, "$(P)ExtSensor$(EXT_SENSOR_ID)-HIGH-RB_ PP")
     field(INPB, "$(P)ExtSensor$(EXT_SENSOR_ID)-DD_ NPP")
@@ -291,26 +247,20 @@ record(calc, "$(P)ExtSensor$(EXT_SENSOR_ID)-HIGH-RB")
     field(FLNK, "$(P)ExtSensor$(EXT_SENSOR_ID)-HIGH")
 }
 
-
-
 # LOW can be accessible through SNMP OID : externalSensorLowerWarningThreshold
-record(ai, "$(P)ExtSensor$(EXT_SENSOR_ID)-LOW-RB_")
-{
+record(ai, "$(P)ExtSensor$(EXT_SENSOR_ID)-LOW-RB_") {
     field(DESC, "External Sensor $(EXT_SENSOR_ID)")
     field(DTYP, "Snmp")
-    field( INP, "@$(HOST) $(USER) EMD-MIB::externalSensorLowerWarningThreshold.$(EXT_SENSOR_ID) INTEGER: 100")
+    field(INP,  "@$(HOST) $(USER) EMD-MIB::externalSensorLowerWarningThreshold.$(EXT_SENSOR_ID) INTEGER: 100")
 }
 
-record(stringout, "$(P)ExtSensor$(EXT_SENSOR_ID)-LOW")
-{
-    field( OUT, "$(P)ExtSensor$(EXT_SENSOR_ID)-RB.LOW NPP")
+record(stringout, "$(P)ExtSensor$(EXT_SENSOR_ID)-LOW") {
+    field(OUT,  "$(P)ExtSensor$(EXT_SENSOR_ID)-RB.LOW NPP")
     field(OMSL, "closed_loop")
-    field( DOL, "$(P)ExtSensor$(EXT_SENSOR_ID)-LOW-RB.VAL NPP")
-
+    field(DOL,  "$(P)ExtSensor$(EXT_SENSOR_ID)-LOW-RB.VAL NPP")
 }
 
-record(calc, "$(P)ExtSensor$(EXT_SENSOR_ID)-LOW-RB")
-{
+record(calc, "$(P)ExtSensor$(EXT_SENSOR_ID)-LOW-RB") {
     field(DESC, "External Sensor $(EXT_SENSOR_ID) LOW")
     field(INPA, "$(P)ExtSensor$(EXT_SENSOR_ID)-LOW-RB_ PP")
     field(INPB, "$(P)ExtSensor$(EXT_SENSOR_ID)-DD_ NPP")
@@ -318,26 +268,20 @@ record(calc, "$(P)ExtSensor$(EXT_SENSOR_ID)-LOW-RB")
     field(FLNK, "$(P)ExtSensor$(EXT_SENSOR_ID)-LOW")
 }
 
-
-
 # LOLO can be accessible through SNMP OID : externalSensorLowerWarningThreshold
-record(ai, "$(P)ExtSensor$(EXT_SENSOR_ID)-LOLO-RB_")
-{
+record(ai, "$(P)ExtSensor$(EXT_SENSOR_ID)-LOLO-RB_") {
     field(DESC, "External Sensor $(EXT_SENSOR_ID)")
     field(DTYP, "Snmp")
-    field( INP, "@$(HOST) $(USER) EMD-MIB::externalSensorLowerCriticalThreshold.$(EXT_SENSOR_ID) INTEGER: 100")
+    field(INP,  "@$(HOST) $(USER) EMD-MIB::externalSensorLowerCriticalThreshold.$(EXT_SENSOR_ID) INTEGER: 100")
 }
 
-record(stringout, "$(P)ExtSensor$(EXT_SENSOR_ID)-LOLO")
-{
-    field( OUT, "$(P)ExtSensor$(EXT_SENSOR_ID)-RB.LOLO NPP")
+record(stringout, "$(P)ExtSensor$(EXT_SENSOR_ID)-LOLO") {
+    field(OUT,  "$(P)ExtSensor$(EXT_SENSOR_ID)-RB.LOLO NPP")
     field(OMSL, "closed_loop")
-    field( DOL, "$(P)ExtSensor$(EXT_SENSOR_ID)-LOLO-RB.VAL NPP")
-
+    field(DOL,  "$(P)ExtSensor$(EXT_SENSOR_ID)-LOLO-RB.VAL NPP")
 }
 
-record(calc, "$(P)ExtSensor$(EXT_SENSOR_ID)-LOLO-RB")
-{
+record(calc, "$(P)ExtSensor$(EXT_SENSOR_ID)-LOLO-RB") {
     field(DESC, "External Sensor $(EXT_SENSOR_ID) LOLO")
     field(INPA, "$(P)ExtSensor$(EXT_SENSOR_ID)-LOLO-RB_ PP")
     field(INPB, "$(P)ExtSensor$(EXT_SENSOR_ID)-DD_ NPP")
