@@ -17,3 +17,4 @@ core.*
 */__pycache__/
 test/walks/
 test/demo_test/
+tools/db_generate/subst/*.substitution
