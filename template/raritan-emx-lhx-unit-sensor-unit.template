@@ -3,72 +3,57 @@
 # Increase HIGH if sensor number is larger
 # HIGH 2 : up to 13 sensors
 # HIGH 4 :
-record(bo, "$(P)LHX$(LHX_ID)-$(SENSOR_NAME)$(SENSOR_SUBID)-Update-Cmd")
-{
+record(bo, "$(P)LHX$(LHX_ID)-$(SENSOR_NAME)$(SENSOR_SUBID)-Update-Cmd") {
     field(DESC, "Update LHX$(LHX_ID)-$(SENSOR_NAME)$(SENSOR_SUBID) Readbacks")
     field(ZNAM, "Update")
     field(ONAM, "update")
     field(FLNK, "$(P)LHX$(LHX_ID)-$(SENSOR_NAME)$(SENSOR_SUBID)Update:Fout_")
     field(HIGH, "4")
-    field( VAL, "1")
+    field(VAL,  "1")
     field(PINI, "YES")
 }
 
-
-record(fanout, "$(P)LHX$(LHX_ID)-$(SENSOR_NAME)$(SENSOR_SUBID)Update:Fout_")
-{
+record(fanout, "$(P)LHX$(LHX_ID)-$(SENSOR_NAME)$(SENSOR_SUBID)Update:Fout_") {
     field(LNK1, "$(P)LHX$(LHX_ID)-$(SENSOR_NAME)$(SENSOR_SUBID)-EGU-RB")
     field(LNK2, "$(P)LHX$(LHX_ID)-$(SENSOR_NAME)$(SENSOR_SUBID)-DD_")
     field(LNK3, "$(P)LHX$(LHX_ID)-$(SENSOR_NAME)$(SENSOR_SUBID)-NAME-RB")
 }
 
-
-record(calc, "$(P)LHX$(LHX_ID)-$(SENSOR_NAME)$(SENSOR_SUBID)-RB")
-{
+record(calc, "$(P)LHX$(LHX_ID)-$(SENSOR_NAME)$(SENSOR_SUBID)-RB") {
     field(DESC, "Sensor $(SENSOR_ID) $(SENSOR_SUBID)")
     field(INPA, "$(P)LHX$(LHX_ID)-$(SENSOR_NAME)$(SENSOR_SUBID)-RB_ CPP")
     field(INPB, "$(P)LHX$(LHX_ID)-$(SENSOR_NAME)$(SENSOR_SUBID)-DD_ NPP")
     field(CALC, "A * 10^(-B)")
 }
 
-
-record(ai, "$(P)LHX$(LHX_ID)-$(SENSOR_NAME)$(SENSOR_SUBID)-RB_")
-{
+record(ai, "$(P)LHX$(LHX_ID)-$(SENSOR_NAME)$(SENSOR_SUBID)-RB_") {
     field(DESC, "Sensor $(SENSOR_ID) $(SENSOR_SUBID)")
     field(DTYP, "Snmp")
     field(SCAN, ".2 second")
     field(PREC, "3")
-    field(INP, "@$(HOST) $(USER) LHX-MIB::measurementsSensorValue.$(LHX_ID).$(SENSOR_ID).$(SENSOR_SUBID) INTEGER: 100")
+    field(INP,  "@$(HOST) $(USER) LHX-MIB::measurementsSensorValue.$(LHX_ID).$(SENSOR_ID).$(SENSOR_SUBID) INTEGER: 100")
 }
 
-
-record(longin, "$(P)LHX$(LHX_ID)-$(SENSOR_NAME)$(SENSOR_SUBID)-DD_")
-{
+record(longin, "$(P)LHX$(LHX_ID)-$(SENSOR_NAME)$(SENSOR_SUBID)-DD_") {
     field(DTYP, "Snmp")
-    field(INP, "@$(HOST) $(USER) LHX-MIB::sensorDecimalDigits.$(LHX_ID).$(SENSOR_ID).$(SENSOR_SUBID) Gauge32: 100")
+    field(INP,  "@$(HOST) $(USER) LHX-MIB::sensorDecimalDigits.$(LHX_ID).$(SENSOR_ID).$(SENSOR_SUBID) Gauge32: 100")
 }
 
-
-record(stringin, "$(P)LHX$(LHX_ID)-$(SENSOR_NAME)$(SENSOR_SUBID)-NAME-RB")
-{
+record(stringin, "$(P)LHX$(LHX_ID)-$(SENSOR_NAME)$(SENSOR_SUBID)-NAME-RB") {
     field(DESC, "Serial Number")
     field(DTYP, "Snmp")
-    field( INP, "@$(HOST) $(USER) LHX-MIB::sensorName.$(LHX_ID).$(SENSOR_ID).$(SENSOR_SUBID) STRING: 40")
+    field(INP,  "@$(HOST) $(USER) LHX-MIB::sensorName.$(LHX_ID).$(SENSOR_ID).$(SENSOR_SUBID) STRING: 40")
 }
 
-
-
-record(longin, "$(P)LHX$(LHX_ID)-$(SENSOR_NAME)$(SENSOR_SUBID)-EGU-RB_")
-{
+record(longin, "$(P)LHX$(LHX_ID)-$(SENSOR_NAME)$(SENSOR_SUBID)-EGU-RB_") {
     field(DESC, "SNMP channel")
     field(DTYP, "Snmp")
-    field( INP, "@$(HOST) $(USER) LHX-MIB::sensorUnit.$(LHX_ID).$(SENSOR_ID).$(SENSOR_SUBID)  ( 100 i")
+    field(INP,  "@$(HOST) $(USER) LHX-MIB::sensorUnit.$(LHX_ID).$(SENSOR_ID).$(SENSOR_SUBID)  ( 100 i")
 }
 
-record(mbbi, "$(P)LHX$(LHX_ID)-$(SENSOR_NAME)$(SENSOR_SUBID)-EGU-RB")
-{
+record(mbbi, "$(P)LHX$(LHX_ID)-$(SENSOR_NAME)$(SENSOR_SUBID)-EGU-RB") {
     field(DTYP, "Raw Soft Channel")
-    field( INP, "$(P)LHX$(LHX_ID)-$(SENSOR_NAME)$(SENSOR_SUBID)-EGU-RB_ PP")
+    field(INP,  "$(P)LHX$(LHX_ID)-$(SENSOR_NAME)$(SENSOR_SUBID)-EGU-RB_ PP")
     field(ZRST, "other")
     field(ZRVL, "0")
     field(ONST, "volt")
@@ -104,12 +89,8 @@ record(mbbi, "$(P)LHX$(LHX_ID)-$(SENSOR_NAME)$(SENSOR_SUBID)-EGU-RB")
     field(FLNK, "$(P)LHX$(LHX_ID)-$(SENSOR_NAME)$(SENSOR_SUBID)-EGU")
 }
 
-
-
-record(stringout, "$(P)LHX$(LHX_ID)-$(SENSOR_NAME)$(SENSOR_SUBID)-EGU")
-{
-    field( OUT, "$(P)LHX$(LHX_ID)-$(SENSOR_NAME)$(SENSOR_SUBID)-RB.EGU NPP")
+record(stringout, "$(P)LHX$(LHX_ID)-$(SENSOR_NAME)$(SENSOR_SUBID)-EGU") {
+    field(OUT,  "$(P)LHX$(LHX_ID)-$(SENSOR_NAME)$(SENSOR_SUBID)-RB.EGU NPP")
     field(OMSL, "closed_loop")
-    field( DOL, "$(P)LHX$(LHX_ID)-$(SENSOR_NAME)$(SENSOR_SUBID)-EGU-RB.VAL NPP")
-
+    field(DOL,  "$(P)LHX$(LHX_ID)-$(SENSOR_NAME)$(SENSOR_SUBID)-EGU-RB.VAL NPP")
 }

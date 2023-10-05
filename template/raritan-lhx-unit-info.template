@@ -1,34 +1,28 @@
 # Query current settings and one-time parameters (ID and SN)
-record(bo, "$(P)Lhx$(LHX_ID)InfoUpdate-Cmd")
-{
+record(bo, "$(P)Lhx$(LHX_ID)InfoUpdate-Cmd") {
     field(DESC, "Update Lhx$(LHX_ID) Readbacks")
     field(ZNAM, "Update")
     field(ONAM, "update")
     field(FLNK, "$(P)Lhx$(LHX_ID)InfoUpdate:1-Fout_")
     field(HIGH, "2")
-    field( VAL, "1")
+    field(VAL,  "1")
     field(PINI, "YES")
 }
 
-record(fanout, "$(P)Lhx$(LHX_ID)InfoUpdate:1-Fout_")
-{
+record(fanout, "$(P)Lhx$(LHX_ID)InfoUpdate:1-Fout_") {
     field(LNK1, "$(P)SN-RB")
     field(LNK2, "$(P)FW-RB")
     field(LNK3, "$(P)MODEL-RB")
 }
 
-
-record(stringin, "$(P)Lhx$(LHX_ID)FW-RB")
-{
+record(stringin, "$(P)Lhx$(LHX_ID)FW-RB") {
     field(DESC, "FirmWare Version")
     field(DTYP, "Snmp")
-    field( INP, "@$(HOST) $(USER) EMD-MIB::firmwareVersion.0  STRING: 40")
+    field(INP,  "@$(HOST) $(USER) EMD-MIB::firmwareVersion.0  STRING: 40")
 }
 
-record(stringin, "$(P)MODEL-RB")
-{
+record(stringin, "$(P)MODEL-RB") {
     field(DESC, "Model Name")
     field(DTYP, "Snmp")
-    field( INP, "@$(HOST) $(USER) EMD-MIB::model.0 STRING: 40")
-
+    field(INP,  "@$(HOST) $(USER) EMD-MIB::model.0 STRING: 40")
 }

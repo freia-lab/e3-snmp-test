@@ -1,29 +1,23 @@
 # Decimal Digit should be needed to call one time
 # when IOC is started
-record(bo, "$(P)ExtSensor$(EXT_SENSOR_ID)Update-Cmd")
-{
+record(bo, "$(P)ExtSensor$(EXT_SENSOR_ID)Update-Cmd") {
     field(DESC, "Update ExtSensor$(EXT_SENSOR_ID) Readbacks")
     field(ZNAM, "Update")
     field(ONAM, "update")
     field(FLNK, "$(P)ExtSensor$(EXT_SENSOR_ID)Update:1-Fout_")
     field(HIGH, "2")
-    field( VAL, "1")
+    field(VAL,  "1")
     field(PINI, "YES")
 }
 
-
-record(fanout, "$(P)ExtSensor$(EXT_SENSOR_ID)Update:1-Fout_")
-{
+record(fanout, "$(P)ExtSensor$(EXT_SENSOR_ID)Update:1-Fout_") {
     field(LNK1, "$(P)ExtSensor$(EXT_SENSOR_ID)-EGU-RB")
     field(LNK2, "$(P)ExtSensor$(EXT_SENSOR_ID)-DD_")
     field(LNK3, "$(P)ExtSensor$(EXT_SENSOR_ID)-SN-RB")
     field(LNK4, "$(P)ExtSensor$(EXT_SENSOR_ID)-Type-RB")
-
 }
 
-
-record(calc, "$(P)ExtSensor$(EXT_SENSOR_ID)-RB")
-{
+record(calc, "$(P)ExtSensor$(EXT_SENSOR_ID)-RB") {
     field(DESC, "External Sensor $(EXT_SENSOR_ID)")
     field(INPA, "$(P)ExtSensor$(EXT_SENSOR_ID)-RB_ CPP")
     field(INPB, "$(P)ExtSensor$(EXT_SENSOR_ID)-DD_ NPP")
@@ -32,43 +26,35 @@ record(calc, "$(P)ExtSensor$(EXT_SENSOR_ID)-RB")
 }
 
 # PDU2-MIB::measurementsExternalSensorValue.1.1 = INTEGER: 246
-record(ai, "$(P)ExtSensor$(EXT_SENSOR_ID)-RB_")
-{
+record(ai, "$(P)ExtSensor$(EXT_SENSOR_ID)-RB_") {
     field(DESC, "External Sensor $(EXT_SENSOR_ID)")
     field(DTYP, "Snmp")
     field(SCAN, ".2 second")
     field(PREC, "3")
-    field(INP, "@$(HOST) $(USER) PDU2-MIB::measurementsExternalSensorValue.1.$(EXT_SENSOR_ID) INTEGER: 100")
+    field(INP,  "@$(HOST) $(USER) PDU2-MIB::measurementsExternalSensorValue.1.$(EXT_SENSOR_ID) INTEGER: 100")
 }
 
 #PDU2-MIB::externalSensorDecimalDigits.1.1 = Gauge32: 1
-record(longin, "$(P)ExtSensor$(EXT_SENSOR_ID)-DD_")
-{
+record(longin, "$(P)ExtSensor$(EXT_SENSOR_ID)-DD_") {
     field(DTYP, "Snmp")
-    field(INP, "@$(HOST) $(USER) PDU2-MIB::externalSensorDecimalDigits.1.$(EXT_SENSOR_ID) Gauge32: 100")
+    field(INP,  "@$(HOST) $(USER) PDU2-MIB::externalSensorDecimalDigits.1.$(EXT_SENSOR_ID) Gauge32: 100")
 }
 
-
-record(stringin, "$(P)ExtSensor$(EXT_SENSOR_ID)-SN-RB")
-{
+record(stringin, "$(P)ExtSensor$(EXT_SENSOR_ID)-SN-RB") {
     field(DESC, "Serial Number")
     field(DTYP, "Snmp")
-    field( INP, "@$(HOST) $(USER) PDU2-MIB::externalSensorSerialNumber.1.$(EXT_SENSOR_ID) STRING: 40")
+    field(INP,  "@$(HOST) $(USER) PDU2-MIB::externalSensorSerialNumber.1.$(EXT_SENSOR_ID) STRING: 40")
 }
 
-
-record(longin, "$(P)ExtSensor$(EXT_SENSOR_ID)-Type-RB_")
-{
+record(longin, "$(P)ExtSensor$(EXT_SENSOR_ID)-Type-RB_") {
     field(DESC, "SNMP channel")
     field(DTYP, "Snmp")
-    field( INP, "@$(HOST) $(USER) PDU2-MIB::externalSensorType.1.$(EXT_SENSOR_ID)  ( 100 i")
+    field(INP,  "@$(HOST) $(USER) PDU2-MIB::externalSensorType.1.$(EXT_SENSOR_ID)  ( 100 i")
 }
 
-
-record(mbbi, "$(P)ExtSensor$(EXT_SENSOR_ID)-Type-RB")
-{
+record(mbbi, "$(P)ExtSensor$(EXT_SENSOR_ID)-Type-RB") {
     field(DTYP, "Soft Channel")
-    field( INP, "$(P)ExtSensor$(EXT_SENSOR_ID)-Type-RB_ PP")
+    field(INP,  "$(P)ExtSensor$(EXT_SENSOR_ID)-Type-RB_ PP")
     field(ZRST, "undefined")
     field(ZRVL, "0")
     field(ONST, "rmsCurrent")
@@ -103,19 +89,15 @@ record(mbbi, "$(P)ExtSensor$(EXT_SENSOR_ID)-Type-RB")
     field(FFVL, "15")
 }
 
-
-
-record(longin, "$(P)ExtSensor$(EXT_SENSOR_ID)-EGU-RB_")
-{
+record(longin, "$(P)ExtSensor$(EXT_SENSOR_ID)-EGU-RB_") {
     field(DESC, "SNMP channel")
     field(DTYP, "Snmp")
-    field( INP, "@$(HOST) $(USER) PDU2-MIB::externalSensorUnits.1.$(EXT_SENSOR_ID)  ( 100 i")
+    field(INP,  "@$(HOST) $(USER) PDU2-MIB::externalSensorUnits.1.$(EXT_SENSOR_ID)  ( 100 i")
 }
 
-record(mbbi, "$(P)ExtSensor$(EXT_SENSOR_ID)-EGU-RB")
-{
+record(mbbi, "$(P)ExtSensor$(EXT_SENSOR_ID)-EGU-RB") {
     field(DTYP, "Soft Channel")
-    field( INP, "$(P)ExtSensor$(EXT_SENSOR_ID)-EGU-RB_ PP")
+    field(INP,  "$(P)ExtSensor$(EXT_SENSOR_ID)-EGU-RB_ PP")
     field(ZRST, "other")
     field(ZRVL, "0")
     field(ONST, "volt")
@@ -151,12 +133,8 @@ record(mbbi, "$(P)ExtSensor$(EXT_SENSOR_ID)-EGU-RB")
     field(FLNK, "$(P)ExtSensor$(EXT_SENSOR_ID)-EGU")
 }
 
-
-
-record(stringout, "$(P)ExtSensor$(EXT_SENSOR_ID)-EGU")
-{
-    field( OUT, "$(P)ExtSensor$(EXT_SENSOR_ID)-RB.EGU NPP")
+record(stringout, "$(P)ExtSensor$(EXT_SENSOR_ID)-EGU") {
+    field(OUT,  "$(P)ExtSensor$(EXT_SENSOR_ID)-RB.EGU NPP")
     field(OMSL, "closed_loop")
-    field( DOL, "$(P)ExtSensor$(EXT_SENSOR_ID)-EGU-RB.VAL NPP")
-
+    field(DOL,  "$(P)ExtSensor$(EXT_SENSOR_ID)-EGU-RB.VAL NPP")
 }
