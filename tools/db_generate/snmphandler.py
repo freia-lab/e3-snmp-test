@@ -16,18 +16,32 @@ class SnmpManager:
 
 
 class SnmpHandler:
-    def __init__(self, logger: Logger, host_ip: str) -> None:
+    def __init__(self, logger: Logger, args) -> None:
         self.logger = logger
-        self.host_ip = host_ip
+        self.host_ip = args.host_ip
 
-        self.arg_protocol = "-v2c"
-        self.arg_community = "-c public"
+        self.arg_snmp_version = f"-v{args.version}"
+        self.arg_options = self.get_snmpwalk_options(args)
+
+    def get_snmpwalk_options(self, args):
+        if args.version == "2c":
+            return "-c public"
+        elif args.version == "3":
+            return (
+                f"-u {args.user} "
+                f"-a {args.authentication_protocol} "
+                f"-A {args.authentication_protocol_pass_phrase} "
+                f"-l {args.level} "
+                f"-x {args.privacy_protocol} "
+                f"-X {args.privacy_protocol_pass_phase}"
+            )
 
     def snmpwalk(self, oid_root: str, snmp_general_options=None) -> List[str]:
         """Wrapper for `snmpwalk`."""
         # e.g. "snmpwalk -v2c -c public 172.30.5.159 LHX-MIB::measurementsSensorValue"
-        cmd = f"snmpwalk {self.arg_protocol} {self.arg_community} \
+        cmd = f"snmpwalk {self.arg_snmp_version} {self.arg_options} \
             {self.host_ip} {oid_root}"
+
         if snmp_general_options:
             cmd += f" {snmp_general_options}"
 
@@ -45,7 +59,7 @@ class SnmpHandler:
 
         # e.g. "snmpget -v2c -c public 172.30.5.159 ...
         # LHX-MIB::measurementsSensorValue.5.0.1 -Ov"
-        cmd = f"snmpget {self.arg_protocol} {self.arg_community} {self.host_ip} {oid}"
+        cmd = f"snmpget {self.arg_snmp_version} {self.arg_options} {self.host_ip} {oid}"
         if snmp_general_options:
             cmd += f" {snmp_general_options}"
 

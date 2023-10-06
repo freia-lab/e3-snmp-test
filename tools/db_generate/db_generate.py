@@ -18,16 +18,23 @@ logger = logging.getLogger()
 logging.basicConfig(format="%(levelname)s:%(message)s", level=logging.DEBUG)
 
 
-def parse():
+def get_parser():
     parser = argparse.ArgumentParser(
         formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )
+
+    # Use subparsers for different SNMP versions
+    subparsers = parser.add_subparsers(dest="version")
+    subparsers.add_parser("2c", help="SNMP v2c")
+    parser_snmp_v3 = subparsers.add_parser("3", help="SNMP v3")
+
     parser.add_argument("host_ip", help="IP address of the SNMP device")
     parser.add_argument(
         "device",
         choices=["nVent", "EMX"],
         help="Type of device",
     )
+
     parser.add_argument(
         "--substitution-filename",
         "-s",
@@ -36,7 +43,51 @@ def parse():
         default="subst/auto_substitution_file.substitution",
         help="Name and path of substitution file",
     )
-    return parser.parse_args()
+
+    parser_snmp_v3.add_argument(
+        "--user",
+        "-u",
+        required=True,
+        help="Security name",
+    )
+
+    parser_snmp_v3.add_argument(
+        "--authentication-protocol",
+        "-a",
+        choices=["MD5", "SSH"],
+        default="MD5",
+        help="Authentication protocol",
+    )
+
+    parser_snmp_v3.add_argument(
+        "--authentication-protocol-pass-phrase",
+        "-A",
+        help="Authentication protocol pass phrase",
+    )
+
+    parser_snmp_v3.add_argument(
+        "--level",
+        "-l",
+        choices=["noAuthNoPriv", "authNoPriv", "authPriv"],
+        default="authPriv",
+        help="Security level",
+    )
+
+    parser_snmp_v3.add_argument(
+        "--privacy-protocol",
+        "-x",
+        choices=["DES", "AES"],
+        default="DES",
+        help="Privacy protocol",
+    )
+
+    parser_snmp_v3.add_argument(
+        "--privacy-protocol-pass-phase",
+        "-X",
+        help="Privacy protocol pass phrase",
+    )
+
+    return parser
 
 
 class OID:
@@ -255,7 +306,7 @@ def parse_through_mib_dict(
 
 
 def main(args):
-    snmphandler = SnmpHandler(logger, args.host_ip)
+    snmphandler = SnmpHandler(logger, args)
 
     # For some devices it is necessary to parse through multiple mib files,
     # e.g. for the EMX both EMD-MIB and LHX-MIB are used.
@@ -319,5 +370,6 @@ def main(args):
 
 
 if __name__ == "__main__":
-    args = parse()
+    parser = get_parser()
+    args = parser.parse_args()
     main(args)
