@@ -25,7 +25,7 @@ def get_parser():
 
     # Use subparsers for different SNMP versions
     subparsers = parser.add_subparsers(dest='version')
-    parser_snmp_v2c = subparsers.add_parser('2c', help="SNMP v2c")
+    subparsers.add_parser('2c', help="SNMP v2c")
     parser_snmp_v3 = subparsers.add_parser('3', help="SNMP v3")
 
     parser.add_argument("host_ip", help="IP address of the SNMP device")
