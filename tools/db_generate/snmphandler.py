@@ -25,15 +25,14 @@ class SnmpHandler:
 
     def get_snmpwalk_options(self, args):
         if args.version == "2c":
-            snmpwalk_options = "-c public"
+            return "-c public"
         elif args.version == "3":
-            snmpwalk_options = (f"-u {args.user} "
-                                f"-a {args.authentication_protocol} "
-                                f"-A {args.authentication_protocol_pass_phrase} "
-                                f"-l {args.level} "
-                                f"-x {args.privacy_protocol} "
-                                f"-X {args.privacy_protocol_pass_phase}")
-        return snmpwalk_options
+            return (f"-u {args.user} "
+                    f"-a {args.authentication_protocol} "
+                    f"-A {args.authentication_protocol_pass_phrase} "
+                    f"-l {args.level} "
+                    f"-x {args.privacy_protocol} "
+                    f"-X {args.privacy_protocol_pass_phase}")
 
     def snmpwalk(self, oid_root: str, snmp_general_options=None) -> List[str]:
         """Wrapper for `snmpwalk`."""

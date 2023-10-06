@@ -22,12 +22,19 @@ def get_parser():
     parser = argparse.ArgumentParser(
         formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )
+
+    # Use subparsers for different SNMP versions
+    subparsers = parser.add_subparsers(dest='version')
+    parser_snmp_v2c = subparsers.add_parser('2c', help="SNMP v2c")
+    parser_snmp_v3 = subparsers.add_parser('3', help="SNMP v3")
+
     parser.add_argument("host_ip", help="IP address of the SNMP device")
     parser.add_argument(
         "device",
         choices=["nVent", "EMX"],
         help="Type of device",
     )
+
     parser.add_argument(
         "--substitution-filename",
         "-s",
@@ -37,37 +44,28 @@ def get_parser():
         help="Name and path of substitution file",
     )
 
-    parser.add_argument(
-        "--version",
-        "-v",
-        choices=["2c", "3"],
-        default="2c",
-        help="SNMP version",
-    )
-
-    # Options for SNMPv3
-
-    parser.add_argument(
+    parser_snmp_v3.add_argument(
         "--user",
         "-u",
+        required=True,
         help="Security name",
     )
 
-    parser.add_argument(
-        "--authentication_protocol",
+    parser_snmp_v3.add_argument(
+        "--authentication-protocol",
         "-a",
         choices=["MD5", "SSH"],
         default="MD5",
         help="Authentication protocol",
     )
 
-    parser.add_argument(
-        "--authentication_protocol_pass_phrase",
+    parser_snmp_v3.add_argument(
+        "--authentication-protocol-pass-phrase",
         "-A",
         help="Authentication protocol pass phrase",
     )
 
-    parser.add_argument(
+    parser_snmp_v3.add_argument(
         "--level",
         "-l",
         choices=["noAuthNoPriv", "authNoPriv", "authPriv"],
@@ -75,16 +73,16 @@ def get_parser():
         help="Security level",
     )
 
-    parser.add_argument(
-        "--privacy_protocol",
+    parser_snmp_v3.add_argument(
+        "--privacy-protocol",
         "-x",
         choices=["DES", "AES"],
         default="DES",
         help="Privacy protocol",
     )
 
-    parser.add_argument(
-        "--privacy_protocol_pass_phase",
+    parser_snmp_v3.add_argument(
+        "--privacy-protocol-pass-phase",
         "-X",
         help="Privacy protocol pass phrase",
     )
@@ -307,26 +305,6 @@ def parse_through_mib_dict(
                         f.writelines(record + "\n")
 
 
-def check_version_args(args):
-    # Check if required security options are provided
-    # for SNMP v3
-    args_correct, info = True, ""
-    if args.version == "3":
-        if args.user is None:
-            args_correct, info = False, "User if required for v3"
-        elif args.authentication_protocol_pass_phrase is None:
-            args_correct, info = False, "Authentication protocol pass phrase " \
-                                        "is required for v3"
-        elif args.authentication_protocol_pass_phrase is None:
-            args_correct, info = False, "Authentication protocol pass phrase " \
-                                        "is required for v3"
-        elif args.privacy_protocol_pass_phase is None:
-            args_correct, info = False, "Privact protocol pass phrase " \
-                                        "is required for v3"
-
-    return args_correct, info
-
-
 def main(args):
     snmphandler = SnmpHandler(logger, args)
 
@@ -394,9 +372,4 @@ def main(args):
 if __name__ == "__main__":
     parser = get_parser()
     args = parser.parse_args()
-
-    args_correct, info = check_version_args(args)
-    if not args_correct:
-        parser.error(info)
-
     main(args)
