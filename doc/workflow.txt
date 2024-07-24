@@ -21,3 +21,6 @@ Checkout the commit from main that you would like to base a new freia branch and
 
 git push origin freia-7.0.7-5.0.0/1.1.0-1.1.0.4+0-5876dbe
 
+
+If updating the main commit the changes and push it to origin main.
+
