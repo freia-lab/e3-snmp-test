@@ -1,0 +1,23 @@
+* To synchronize with the upstream repository at gitlab issue the command:
+
+git checkout main
+git fetch upstream
+
+See the branches and tags in the repository, ei:
+
+konrad@nuc-11:~/modules/e3-snmp$ git tag
+7.0.5-3.4.1/1.0.0.2-3e7ebe4-20210521T181052
+7.0.5-3.4.1/1.1.0.1-3530959-20210524T180012
+7.0.6.1-4.0.0/1.1.0-1.1.0.3+0-0fcbc3a-20220302T104236
+7.0.6.1-4.0.0/1.1.0-1.1.0.3+0-0fcbc3a-20220302T104537
+7.0.7-5.0.0/1.1.0-1.1.0.4+0-5876dbe-20230127T145044
+7.0.8-5.1.0/1.1.0-1.1.0.4+1-941e85e-20240419T191942
+7.0.8-5.1.0/1.1.0-1.1.0.4+2-065b83c-20240422T152612
+konrad@nuc-11:~/modules/e3-snmp$ git branch
+  freia-7.0.7-5.0.0/1.1.0-1.1.0.4+0-5876dbe
+* main
+
+Checkout the commit from main that you would like to base a new freia branch and create a new freia branch branch. Make necessary changes, commit them and push the new branch to the origin
+
+git push origin freia-7.0.7-5.0.0/1.1.0-1.1.0.4+0-5876dbe
+
